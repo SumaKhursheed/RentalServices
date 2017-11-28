@@ -10,12 +10,10 @@
     <string name="action_cart">Cart</string>
     <string name="action_notifications">Notifications</string>
 
-    <string name="item_1">Offers</string>
-    <string name="item_2">Electronics</string>
-    <string name="item_3">Lifestyle</string>
-    <string name="item_4">Home Appliances</string>
-    <string name="item_5">Books \u0026 More</string>
-    <string name="item_6">More</string>
+    <string name="item_1">Solar</string>
+    <string name="item_2">HVAC</string>
+    <string name="item_3">Smart Lighting</string>
+    <string name="item_4">Window Film</string>
 
     <string name="my_profile">My Profile</string>
     <string name="my_rewards">My Rewards</string>

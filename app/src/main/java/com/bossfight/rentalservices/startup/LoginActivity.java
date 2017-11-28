@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.bossfight.rentalservices.R;
+import com.bossfight.rentalservices.customer.CustomerDashboard;
 import com.bossfight.rentalservices.utility.AppConfig;
 
 import org.json.JSONException;
@@ -72,7 +73,7 @@ public class LoginActivity extends Activity
                                 Toast.makeText(getApplicationContext(), "Log in Successful", Toast.LENGTH_SHORT).show();
                                 String token = jObj.getString("token");
                                 Intent intent = new Intent();
-                                intent.setClass(LoginActivity.this, IntroActivity.class);
+                                intent.setClass(LoginActivity.this, CustomerDashboard.class);
                                 intent.putExtra("token", token);
                                 startActivity(intent);
                             } else{
