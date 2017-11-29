@@ -4,9 +4,6 @@ import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
 
-/**
- * Created by 06peng on 15/6/26.
- */
 public class CustomProgressbarDrawable extends Drawable {
 
     private ImageDownloadListener mListener;

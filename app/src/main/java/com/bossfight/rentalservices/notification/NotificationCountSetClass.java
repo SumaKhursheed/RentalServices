@@ -5,9 +5,6 @@ import android.content.Context;
 import android.graphics.drawable.LayerDrawable;
 import android.view.MenuItem;
 
-/**
- * Created by priyankam on 19-07-2016.
- */
 public class NotificationCountSetClass extends Activity {
     private static LayerDrawable icon;
     public NotificationCountSetClass() {

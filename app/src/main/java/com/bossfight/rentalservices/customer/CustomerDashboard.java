@@ -1,7 +1,6 @@
 package com.bossfight.rentalservices.customer;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -20,7 +19,6 @@ import android.widget.Toast;
 
 import com.bossfight.rentalservices.R;
 import com.bossfight.rentalservices.fragments.ImageListFragment;
-import com.bossfight.rentalservices.miscellaneous.EmptyActivity;
 import com.bossfight.rentalservices.notification.NotificationCountSetClass;
 import com.bossfight.rentalservices.options.CartListActivity;
 import com.bossfight.rentalservices.options.SearchResultActivity;
@@ -62,15 +60,6 @@ public class CustomerDashboard extends AppCompatActivity
             tabLayout.setupWithViewPager(viewPager);
         }
 
-
-      /*  FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
     }
 
     @Override
@@ -98,39 +87,25 @@ public class CustomerDashboard extends AppCompatActivity
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        // Get the notifications MenuItem and
-        // its LayerDrawable (layer-list)
         MenuItem item = menu.findItem(R.id.action_cart);
         NotificationCountSetClass.setAddToCart(CustomerDashboard.this, item,notificationCountCart);
-        // force the ActionBar to relayout its MenuItems.
-        // onCreateOptionsMenu(Menu) will be called again.
         invalidateOptionsMenu();
         return super.onPrepareOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_search) {
             startActivity(new Intent(CustomerDashboard.this, SearchResultActivity.class));
             return true;
         }else if (id == R.id.action_cart) {
-
-           /* NotificationCountSetClass.setAddToCart(MainActivity.this, item, notificationCount);
-            invalidateOptionsMenu();*/
             startActivity(new Intent(CustomerDashboard.this, CartListActivity.class));
-
-           /* notificationCount=0;//clear notification count
-            invalidateOptionsMenu();*/
             return true;
         }else {
             startActivity(new Intent(CustomerDashboard.this, WishlistActivity.class));
-
         }
         return super.onOptionsItemSelected(item);
     }
@@ -163,7 +138,7 @@ public class CustomerDashboard extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+
         int id = item.getItemId();
 
         if (id == R.id.nav_item1) {

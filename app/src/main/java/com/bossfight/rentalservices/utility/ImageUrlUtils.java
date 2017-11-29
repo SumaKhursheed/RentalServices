@@ -2,16 +2,14 @@ package com.bossfight.rentalservices.utility;
 
 import java.util.ArrayList;
 
-/**
- * Created by 06peng on 2015/6/24.
- */
 public class ImageUrlUtils {
     static ArrayList<String> wishlistImageUri = new ArrayList<>();
     static ArrayList<String> cartListImageUri = new ArrayList<>();
+    static ArrayList<String> orderListImageUri = new ArrayList<>();
 
     public static String[] getImageUrls() {
         String[] urls = new String[] {
-                "https://static.pexels.com/photos/5854/sea-woman-legs-water-medium.jpg",
+                "https://static.pexels.com/photos/159397/solar-panel-array-power-sun-electricity-159397.jpeg",
                 "https://static.pexels.com/photos/6245/kitchen-cooking-interior-decor-medium.jpg",
                 "https://static.pexels.com/photos/6770/light-road-lights-night-medium.jpg",
                 "https://static.pexels.com/photos/6041/nature-grain-moving-cereal-medium.jpg",
@@ -121,113 +119,52 @@ public class ImageUrlUtils {
         return urls;
     }
 
-    public static String[] getOffersUrls() {
+    public static String[] getSolarUrls() {
         String[] urls = new String[]{
-                "https://static.pexels.com/photos/1543/landscape-nature-man-person-medium.jpg",
-                "https://static.pexels.com/photos/211048/pexels-photo-211048-medium.jpeg",
-                "https://static.pexels.com/photos/1778/numbers-time-watch-white-medium.jpg",
-                "https://static.pexels.com/photos/111147/pexels-photo-111147-medium.jpeg",
-                "https://static.pexels.com/photos/2713/wall-home-deer-medium.jpg",
-                "https://static.pexels.com/photos/168575/pexels-photo-168575-medium.jpeg",
-                "https://static.pexels.com/photos/213384/pexels-photo-213384-medium.jpeg",
-                "https://static.pexels.com/photos/67442/pexels-photo-67442-medium.jpeg",
-                "https://static.pexels.com/photos/159494/book-glasses-read-study-159494-medium.jpeg",
-                "https://static.pexels.com/photos/1543/landscape-nature-man-person-medium.jpg",
-                "https://static.pexels.com/photos/211048/pexels-photo-211048-medium.jpeg",
-                "https://static.pexels.com/photos/2713/wall-home-deer-medium.jpg",
-                "https://static.pexels.com/photos/177143/pexels-photo-177143-medium.jpeg",
-                "https://static.pexels.com/photos/106936/pexels-photo-106936-medium.jpeg"
+                "https://static.pexels.com/photos/159397/solar-panel-array-power-sun-electricity-159397.jpeg",
+                "https://static.pexels.com/photos/704810/pexels-photo-704810.jpeg",
+                "https://stupiddope.com/wp-content/uploads/2015/05/Screen-Shot-2015-05-20-at-10.55.56-AM.png",
+                "https://images-na.ssl-images-amazon.com/images/I/71dSGIKOLtL._SL1500_.jpg",
+                "https://inhabitat.com/files/sun_bricks_main.jpg",
+                "https://static.techspot.com/images2/news/bigimage/2014/08/2014-08-08-image-3.jpg",
+                "https://media.treehugger.com/assets/images/2015/04/3506269_orig.jpg.650x0_q70_crop-smart.jpg",
         };
         return urls;
     }
 
-    public static String[] getHomeApplianceUrls() {
+    public static String[] getHvacUrls() {
         String[] urls = new String[]{
-                "https://static.pexels.com/photos/1778/numbers-time-watch-white-medium.jpg",
-                "https://static.pexels.com/photos/189293/pexels-photo-189293-medium.jpeg",
-                "https://static.pexels.com/photos/4703/inside-apartment-design-home-medium.jpg",
-                "https://static.pexels.com/photos/133919/pexels-photo-133919-medium.jpeg",
-                "https://static.pexels.com/photos/111147/pexels-photo-111147-medium.jpeg",
-                "https://static.pexels.com/photos/2713/wall-home-deer-medium.jpg",
-                "https://static.pexels.com/photos/177143/pexels-photo-177143-medium.jpeg",
-                "https://static.pexels.com/photos/106936/pexels-photo-106936-medium.jpeg",
-                "https://static.pexels.com/photos/1778/numbers-time-watch-white-medium.jpg",
-                "https://static.pexels.com/photos/189293/pexels-photo-189293-medium.jpeg",
-                "https://static.pexels.com/photos/4703/inside-apartment-design-home-medium.jpg",
-                "https://static.pexels.com/photos/133919/pexels-photo-133919-medium.jpeg",
-                "https://static.pexels.com/photos/111147/pexels-photo-111147-medium.jpeg",
-                "https://static.pexels.com/photos/2713/wall-home-deer-medium.jpg",
-                "https://static.pexels.com/photos/177143/pexels-photo-177143-medium.jpeg",
-                "https://static.pexels.com/photos/106936/pexels-photo-106936-medium.jpeg"
+                "http://images.dunelm.com/i/dm/1000078711_main.jpg?$v8srpgrid$&img404=noimagedefault",
+                "https://www.canstarblue.com.au/wp-content/uploads/2016/10/Split-system-air-conditioner.jpg",
+                "http://images.nailsmag.com/post/M-exhaust-vent-nailsmag-1.jpg",
+                "https://static1.squarespace.com/static/52865350e4b045ae0cc9df4c/529e0cf0e4b066cb1f3f7a63/52b4f1ebe4b060add9439b18/1387590125426/Alpha_Mechanical_Ventilation_2e.jpg",
         };
         return urls;
     }
 
-    public static String[] getElectronicsUrls() {
+    public static String[] getSmartUrls() {
         String[] urls = new String[]{
-                "https://static.pexels.com/photos/204611/pexels-photo-204611-medium.jpeg",
-                "https://static.pexels.com/photos/214487/pexels-photo-214487-medium.jpeg",
-                "https://static.pexels.com/photos/168575/pexels-photo-168575-medium.jpeg",
-                "https://static.pexels.com/photos/213384/pexels-photo-213384-medium.jpeg",
-                "https://static.pexels.com/photos/114907/pexels-photo-114907-medium.jpeg",
-                "https://static.pexels.com/photos/185030/pexels-photo-185030-medium.jpeg",
-                "https://static.pexels.com/photos/133579/pexels-photo-133579-medium.jpeg",
-                "https://static.pexels.com/photos/51383/photo-camera-subject-photographer-51383-medium.jpeg",
-                "https://static.pexels.com/photos/205926/pexels-photo-205926-medium.jpeg",
-                "https://static.pexels.com/photos/2396/light-glass-lamp-idea-medium.jpg",
-                "https://static.pexels.com/photos/1854/person-woman-hand-relaxing-medium.jpg",
-                "https://static.pexels.com/photos/204611/pexels-photo-204611-medium.jpeg",
-                "https://static.pexels.com/photos/214487/pexels-photo-214487-medium.jpeg",
-                "https://static.pexels.com/photos/168575/pexels-photo-168575-medium.jpeg",
-                "https://static.pexels.com/photos/213384/pexels-photo-213384-medium.jpeg",
-                "https://static.pexels.com/photos/114907/pexels-photo-114907-medium.jpeg"
+                "https://cdn.shopify.com/s/files/1/1100/5760/products/81qzLmYUd-L._SL1500_large.jpg?v=1495436099",
+                "https://assets.pcmag.com/media/images/455753-ge-link-connected-bulb.jpg?thumb=y",
+                "https://www.allaboutyoursecurity.com/wp-content/uploads/2016/10/2gig-security-system.png",
+                "https://cdn.solarbotics.com/products/photos/f4195a9ac70dca62f2e43fa3400d826d/51755-IMG_7505.jpg",
+                "http://www.ikea.com/ms/en_US/media/visual_nav_images/seo_image/Smart%20lighting%20kits__Smart_Lighting_Vis_Nav_01.jpg",
         };
         return urls;
     }
 
-    public static String[] getLifeStyleUrls() {
+    public static String[] getWindowUrls() {
         String[] urls = new String[]{
-                "https://static.pexels.com/photos/169047/pexels-photo-169047-medium.jpeg",
-                "https://static.pexels.com/photos/160826/girl-dress-bounce-nature-160826-medium.jpeg",
-                "https://static.pexels.com/photos/1702/bow-tie-businessman-fashion-man-medium.jpg",
-                "https://static.pexels.com/photos/35188/child-childrens-baby-children-s-medium.jpg",
-                "https://static.pexels.com/photos/70845/girl-model-pretty-portrait-70845-medium.jpeg",
-                "https://static.pexels.com/photos/26378/pexels-photo-26378-medium.jpg",
-                "https://static.pexels.com/photos/193355/pexels-photo-193355-medium.jpeg",
-                "https://static.pexels.com/photos/1543/landscape-nature-man-person-medium.jpg",
-                "https://static.pexels.com/photos/211048/pexels-photo-211048-medium.jpeg",
-                "https://static.pexels.com/photos/189857/pexels-photo-189857-medium.jpeg",
-                "https://static.pexels.com/photos/157948/model-modelling-attractive-fashion-157948-medium.jpeg",
-                "https://static.pexels.com/photos/33608/dog-ice-woman-purple-medium.jpg",
-                "https://static.pexels.com/photos/157940/hair-bracelet-beautiful-beauty-157940-medium.jpeg",
-                "https://static.pexels.com/photos/35188/child-childrens-baby-children-s-medium.jpg",
-                "https://static.pexels.com/photos/70845/girl-model-pretty-portrait-70845-medium.jpeg",
-                "https://static.pexels.com/photos/26378/pexels-photo-26378-medium.jpg",
-                "https://static.pexels.com/photos/193355/pexels-photo-193355-medium.jpeg",
+                "https://www.mediashower.com/img/349/bamboo-decorative-window-film-32-1.jpg",
+                "https://www.homedepot.com/hdus/en_US/DTCCOMNEW/fetch/DIY_Projects_and_Ideas/Decor/Guides/installing-window-film-HT-BG-DC-window-film-hero.jpg",
+                "https://cdn.shopify.com/s/files/1/1553/0873/products/tropical-oasis-privacy-window-film-10_large.jpg?v=1486587837",
+                "https://images-na.ssl-images-amazon.com/images/I/71WF09cDfGL._SY355_.jpg",
+                "https://images-na.ssl-images-amazon.com/images/I/61my%2Bd-J-EL._SY355_.jpg",
+                "https://www.windowfilm.co.uk/site/imagerotators/50/635/privacy-window-film-by-the-window-film-company-4.jpg?w=653&h=285&mode=pad&bgcolor=black",
         };
         return urls;
     }
 
-    public static String[] getBooksUrls() {
-        String[] urls = new String[]{
-                "https://static.pexels.com/photos/67442/pexels-photo-67442-medium.jpeg",
-                "https://static.pexels.com/photos/159494/book-glasses-read-study-159494-medium.jpeg",
-                "https://static.pexels.com/photos/33283/stack-of-books-vintage-books-book-books-medium.jpg",
-                "https://static.pexels.com/photos/205323/pexels-photo-205323-medium.png",
-                "https://static.pexels.com/photos/38167/pexels-photo-38167-medium.jpeg",
-                "https://static.pexels.com/photos/68562/pexels-photo-68562-medium.jpeg",
-                "https://static.pexels.com/photos/34592/pexels-photo-medium.jpg",
-                "https://static.pexels.com/photos/1579/hand-notes-holding-things-medium.jpg",
-                "https://static.pexels.com/photos/26890/pexels-photo-26890-medium.jpg",
-                "https://static.pexels.com/photos/67442/pexels-photo-67442-medium.jpeg",
-                "https://static.pexels.com/photos/159494/book-glasses-read-study-159494-medium.jpeg",
-                "https://static.pexels.com/photos/33283/stack-of-books-vintage-books-book-books-medium.jpg",
-                "https://static.pexels.com/photos/205323/pexels-photo-205323-medium.png",
-                "https://static.pexels.com/photos/38167/pexels-photo-38167-medium.jpeg",
-                "https://static.pexels.com/photos/68562/pexels-photo-68562-medium.jpeg",
-        };
-        return urls;
-    }
 
     // Methods for Wishlist
     public void addWishlistImageUri(String wishlistImageUri) {
@@ -250,4 +187,15 @@ public class ImageUrlUtils {
     }
 
     public ArrayList<String> getCartListImageUri(){ return this.cartListImageUri; }
+
+    //Methods for orders
+    public void addOrderListImageUri(String wishlistImageUri) {
+        this.orderListImageUri.add(0,wishlistImageUri);
+    }
+
+    public void removeOrderListImageUri(int position) {
+        this.orderListImageUri.remove(position);
+    }
+
+    public ArrayList<String> getOrderListImageUri(){ return this.orderListImageUri; }
 }

@@ -10,7 +10,6 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
-
     <application
         android:name=".startup.FrescoApplication"
         android:allowBackup="true"
@@ -21,6 +20,7 @@
         <activity android:name=".startup.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
@@ -32,29 +32,24 @@
         <activity android:name=".startup.Registration" />
         <activity
             android:name=".startup.WelcomeActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity android:name=".startup.IntroActivity" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".customer.CustomerDashboard"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".fragments.ViewPagerActivity" />
-        <activity android:name=".product.ItemDetailsActivity">
-        </activity>
+        <activity android:name=".product.ItemDetailsActivity" />
         <activity
             android:name=".options.WishlistActivity"
-            android:label="@string/my_wishlist">
-        </activity>
+            android:label="@string/my_wishlist" />
         <activity
             android:name=".options.CartListActivity"
-            android:label="@string/my_cart">
-        </activity>
+            android:label="@string/my_cart" />
         <activity android:name=".options.SearchResultActivity">
 
             <!-- to identify this activity as "searchable.xml" -->
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
@@ -62,14 +57,11 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <activity android:name=".miscellaneous.EmptyActivity">
-        </activity>
         <activity
             android:name=".customer.FeedbackActivity"
-            android:label="@string/terms_conditions">
-        </activity>
-        <activity android:name=".customer.ContactActivity">
-        </activity>
+            android:label="@string/terms_conditions" />
+        <activity android:name=".customer.ContactActivity" />
+        <activity android:name=".options.OrderlistActivity"></activity>
     </application>
 
 </manifest>

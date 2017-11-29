@@ -71,8 +71,7 @@ public class ViewPagerActivity extends Activity {
     }
 
     static class SamplePagerAdapter extends PagerAdapter {
-       /* Here I'm adding the demo pics, but you can add your Item related pics , just get your pics based on itemID (use asynctask) and
-        fill the urls in arraylist*/
+
         private static final String[] sDrawables = ImageUrlUtils.getImageUrls();
 
         @Override
@@ -85,7 +84,6 @@ public class ViewPagerActivity extends Activity {
             PhotoView photoView = new PhotoView(container.getContext());
             photoView.setImageUri(sDrawables[position]);
 
-            // Now just add PhotoView to ViewPager and return it
             container.addView(photoView, LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 
             return photoView;

@@ -6,10 +6,6 @@ import android.graphics.drawable.LayerDrawable;
 
 import com.bossfight.rentalservices.R;
 
-
-/**
- * Created by priyankam on 4/13/2016.
- */
 public class SetNotificationCount {
     public static void setBadgeCount(Context context, LayerDrawable icon, int count) {
 

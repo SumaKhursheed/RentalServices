@@ -56,25 +56,15 @@ public class ImageListFragment extends Fragment {
     }
 
     private void setupRecyclerView(RecyclerView recyclerView) {
-      /*  if (ImageListFragment.this.getArguments().getInt("type") == 1) {
-            recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        } else if (ImageListFragment.this.getArguments().getInt("type") == 2) {
-            StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-            recyclerView.setLayoutManager(layoutManager);
-        } else {
-            GridLayoutManager layoutManager = new GridLayoutManager(recyclerView.getContext(), 3);
-            layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-            recyclerView.setLayoutManager(layoutManager);
-        }*/
         String[] items=null;
         if (ImageListFragment.this.getArguments().getInt("type") == 1){
-            items =ImageUrlUtils.getOffersUrls();
+            items =ImageUrlUtils.getSolarUrls();
         }else if (ImageListFragment.this.getArguments().getInt("type") == 2){
-            items =ImageUrlUtils.getElectronicsUrls();
+            items =ImageUrlUtils.getHvacUrls();
         }else if (ImageListFragment.this.getArguments().getInt("type") == 3){
-            items =ImageUrlUtils.getLifeStyleUrls();
+            items =ImageUrlUtils.getSmartUrls();
         }else if (ImageListFragment.this.getArguments().getInt("type") == 4){
-            items =ImageUrlUtils.getHomeApplianceUrls();
+            items =ImageUrlUtils.getWindowUrls();
         }else {
             items = ImageUrlUtils.getImageUrls();
         }
@@ -128,14 +118,7 @@ public class ImageListFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
-           /* FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) holder.mImageView.getLayoutParams();
-            if (mRecyclerView.getLayoutManager() instanceof GridLayoutManager) {
-                layoutParams.height = 200;
-            } else if (mRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager) {
-                layoutParams.height = 600;
-            } else {
-                layoutParams.height = 800;
-            }*/
+
             final Uri uri = Uri.parse(mValues[position]);
             holder.mImageView.setImageURI(uri);
             holder.mLayoutItem.setOnClickListener(new View.OnClickListener() {

@@ -52,20 +52,6 @@ public class ImagePipelineConfigFactory {
     }
 
     /**
-     * Creates config using OkHttp as network backed.
-     */
-/*  public static ImagePipelineConfig getOkHttpImagePipelineConfig(Context context) {
-    if (sOkHttpImagePipelineConfig == null) {
-      OkHttpClient okHttpClient = new OkHttpClient();
-      ImagePipelineConfig.Builder configBuilder =
-        OkHttpImagePipelineConfigFactory.newBuilder(context, okHttpClient);
-      configureCaches(configBuilder, context);
-      sOkHttpImagePipelineConfig = configBuilder.build();
-    }
-    return sOkHttpImagePipelineConfig;
-  }*/
-
-    /**
      * Configures disk and memory cache not to exceed common limits
      */
     private static void configureCaches(ImagePipelineConfig.Builder configBuilder, Context context) {

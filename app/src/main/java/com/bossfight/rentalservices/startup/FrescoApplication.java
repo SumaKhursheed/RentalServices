@@ -5,9 +5,6 @@ import android.app.Application;
 import com.bossfight.rentalservices.cache.ImagePipelineConfigFactory;
 import com.facebook.drawee.backends.pipeline.Fresco;
 
-/**
- * Created by 06peng on 2015/6/24.
- */
 public class FrescoApplication extends Application {
 
     @Override

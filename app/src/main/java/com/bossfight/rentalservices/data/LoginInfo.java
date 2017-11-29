@@ -1,7 +1,7 @@
 package com.bossfight.rentalservices.data;
 
 /**
- * Created by divyankithaRaghavaUrs on 4/28/17.
+ * Created by SumaKhursheed on 4/28/17.
  */
 
 public class LoginInfo

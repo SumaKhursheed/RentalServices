@@ -30,14 +30,4 @@ public class ContactActivity extends AppCompatActivity {
             }
         });
     }
-
-    public void ring() {
-
-        String number = "408-909-786-2";
-
-        String uri = "tel:" + number.trim() ;
-        Intent intent = new Intent(Intent.ACTION_DIAL);
-        intent.setData(Uri.parse(uri));
-        startActivity(intent);
-    }
 }
