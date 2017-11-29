@@ -4,19 +4,19 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_item1"
-            android:icon="@drawable/ic_account_circle_black_48dp"
+            android:icon="@drawable/solar"
             android:title="@string/item_1" />
         <item
             android:id="@+id/nav_item2"
-            android:icon="@drawable/ic_account_circle_black_48dp"
+            android:icon="@drawable/hvac"
             android:title="@string/item_2" />
         <item
             android:id="@+id/nav_item3"
-            android:icon="@drawable/ic_account_circle_black_48dp"
+            android:icon="@drawable/lig"
             android:title="@string/item_3" />
         <item
             android:id="@+id/nav_item4"
-            android:icon="@drawable/ic_account_circle_black_48dp"
+            android:icon="@drawable/window"
             android:title="@string/item_4" />
     </group>
 
@@ -31,9 +31,9 @@
                 android:icon="@drawable/ic_shopping_cart_black_24dp"
                 android:title="@string/my_cart" />
             <item
-                android:id="@+id/my_account"
-                android:icon="@drawable/ic_person_black_24dp"
-                android:title="@string/my_account" />
+                android:id="@+id/my_wishlist"
+                android:icon="@drawable/ic_favorite_black_24dp"
+                android:title="@string/my_wishlist" />
         </menu>
     </item>
 
@@ -43,7 +43,7 @@
                 android:id="@+id/contact_us"
                 android:title="@string/contact_us" />
             <item
-                android:id="@+id/terms_conditions"
+                android:id="@+id/feedback"
                 android:title="@string/terms_conditions" />
             <item
                 android:id="@+id/help_center"

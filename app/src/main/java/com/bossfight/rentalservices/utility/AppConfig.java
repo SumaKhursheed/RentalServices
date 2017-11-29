@@ -37,9 +37,9 @@ public class AppConfig {
         @FormUrlEncoded
         @POST("/comments")
         void usercomments(
-                @Field("name") String name,
+                //@Field("name") String name,
                 @Field("comment") String comment,
-                @Field("rating") String rating,
+               // @Field("rating") String rating,
                 Callback<Response> callback);
     }
 

@@ -1,6 +1,7 @@
 package com.bossfight.rentalservices.customer;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.bossfight.rentalservices.R;
 import com.bossfight.rentalservices.fragments.ImageListFragment;
@@ -22,6 +24,9 @@ import com.bossfight.rentalservices.miscellaneous.EmptyActivity;
 import com.bossfight.rentalservices.notification.NotificationCountSetClass;
 import com.bossfight.rentalservices.options.CartListActivity;
 import com.bossfight.rentalservices.options.SearchResultActivity;
+import com.bossfight.rentalservices.options.WishlistActivity;
+import com.bossfight.rentalservices.startup.LoginActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +36,7 @@ public class CustomerDashboard extends AppCompatActivity
     public static int notificationCountCart = 0;
     static ViewPager viewPager;
     static TabLayout tabLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,7 +129,7 @@ public class CustomerDashboard extends AppCompatActivity
             invalidateOptionsMenu();*/
             return true;
         }else {
-            startActivity(new Intent(CustomerDashboard.this, EmptyActivity.class));
+            startActivity(new Intent(CustomerDashboard.this, WishlistActivity.class));
 
         }
         return super.onOptionsItemSelected(item);
@@ -168,10 +174,20 @@ public class CustomerDashboard extends AppCompatActivity
             viewPager.setCurrentItem(2);
         } else if (id == R.id.nav_item4) {
             viewPager.setCurrentItem(3);
+        }else if (id == R.id.my_wishlist) {
+            startActivity(new Intent(CustomerDashboard.this, WishlistActivity.class));
         }else if (id == R.id.my_cart) {
             startActivity(new Intent(CustomerDashboard.this, CartListActivity.class));
-        }else {
-            startActivity(new Intent(CustomerDashboard.this, EmptyActivity.class));
+        }else if (id == R.id.help_center){
+            startActivity(new Intent(CustomerDashboard.this, LoginActivity.class));
+            finish();
+            Toast.makeText(getApplicationContext(), "Logged out", Toast.LENGTH_SHORT).show();
+        }
+        else if (id == R.id.feedback){
+            startActivity(new Intent(CustomerDashboard.this, FeedbackActivity.class));
+        }
+        else {
+            startActivity(new Intent(CustomerDashboard.this, ContactActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

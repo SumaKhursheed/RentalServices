@@ -56,7 +56,7 @@
                       android:textSize="10dp"/>
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="Rs. 8,999"
+                      android:text="$ 8,999"
                       android:textSize="12dp"
                       android:textColor="#4CAF50"/>
         </LinearLayout>
