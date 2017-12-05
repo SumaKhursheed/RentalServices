@@ -1,14 +1,15 @@
 package com.bossfight.rentalservices.customer;
 
-
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.bossfight.rentalservices.R;
+
 import com.bossfight.rentalservices.utility.AppConfig;
+import com.bossfight.rentalservices.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,37 +17,36 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class FeedbackActivity extends AppCompatActivity {
+public class PaymentActivity extends AppCompatActivity {
 
-    EditText ProdDescription, emailaddress;
     String BASE_URL = "https://gentle-cliffs-60386.herokuapp.com";
-
+    public EditText name, card, cvc, exp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_feedback);
-        ProdDescription = (EditText) findViewById(R.id.feedbackbox);
-        emailaddress = (EditText) findViewById(R.id.emailadd);
-
+        setContentView(R.layout.activity_payment);
+        name= (EditText)findViewById(R.id.name);
+        card= (EditText)findViewById(R.id.cardnumber);
+        cvc= (EditText)findViewById(R.id.cvc);
+        exp= (EditText)findViewById(R.id.exp);
     }
-
-    public void addComment (View v){
-        String description = ProdDescription.getText().toString();
-        String email = emailaddress.getText().toString();
-
+    public void onPay(View v){
         RestAdapter adapter = new RestAdapter.Builder()
                 .setEndpoint(BASE_URL) //Setting the Root URL
                 .build();
 
-        AppConfig.feedback api = adapter.create(AppConfig.feedback.class);
-        api.usercomments(
-                description,
-                email,
+        AppConfig.payment api = adapter.create(AppConfig.payment.class);
+        api.pay(
+                card.getText().toString(),
+//                cvc.getText().toString(),
+//                amount.getText().toString(),
+//                email.getText().toString(),
                 new Callback<Response>() {
                     @Override
                     public void success(Response result, Response response) {
@@ -59,12 +59,16 @@ public class FeedbackActivity extends AppCompatActivity {
                             Log.d("success", "" + resp);
 
                             JSONObject jObj = new JSONObject(resp);
-                            String t = jObj.getString("_id");
+                            int success = jObj.getInt("success");
 
-                            if(t != null){
-                                Toast.makeText(getApplicationContext(), "You will receive an email shortly. Thank you.", Toast.LENGTH_SHORT).show();;
+
+                            if(success == 1){
+                                Toast.makeText(getApplicationContext(), "Payment Successful", Toast.LENGTH_SHORT).show();;
+                                Intent intent = new Intent();
+                                intent.setClass(com.bossfight.rentalservices.customer.PaymentActivity.this, CustomerDashboard.class);
+                                startActivity(intent);
                             } else{
-                                Toast.makeText(getApplicationContext(), "Submission Failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Payment failed", Toast.LENGTH_SHORT).show();
                             }
 
 
@@ -77,17 +81,14 @@ public class FeedbackActivity extends AppCompatActivity {
 
                     @Override
                     public void failure(RetrofitError error) {
-                        Toast.makeText(FeedbackActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(com.bossfight.rentalservices.customer.PaymentActivity.this, error.toString(), Toast.LENGTH_LONG).show();
                     }
                 }
         );
-
     }
 
-
-    @Override
-    public void onBackPressed() {
-        finish();
+    public void cancel(View v) {
+        Intent intent = new Intent(com.bossfight.rentalservices.customer.PaymentActivity.this, CustomerDashboard.class);
+        startActivity(intent);
     }
-
 }

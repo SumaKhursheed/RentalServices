@@ -22,16 +22,16 @@
                        android:layout_marginLeft="@dimen/activity_horizontal_margin">
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="Denim Shirt"
+                      android:text="Solar Panel"
                       android:textSize="@dimen/text_size_small"
                       android:textStyle="bold"/>
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="Slim fit, cotton"
+                      android:text="Clean power for Grid-Tied or Off-Grid applications"
                       android:textSize="@dimen/text_size_small"/>
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="Rs. 8,999"
+                      android:text="$ 980.99"
                       android:textSize="@dimen/text_size_xmedium"
                       android:textColor="#4CAF50"
                       android:layout_marginTop="@dimen/margin_small"/>
@@ -47,11 +47,6 @@
                           android:layout_height="wrap_content"
                           android:text="Qty: 1"
                           android:textSize="@dimen/text_size_small"/>
-                <TextView android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:text="Size: 41"
-                          android:textSize="@dimen/text_size_small"
-                          android:layout_marginLeft="@dimen/margin_medium"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

@@ -33,13 +33,13 @@
                 android:orientation="vertical">
                 <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
-                          android:text="Denim Shirt"
+                          android:text="Solar Panel"
                           android:textSize="16dp"
                           android:textColor="@color/gen_black"/>
                 <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginTop="8dp"
-                          android:text="$ 1,979"
+                          android:text="$ 980.99"
                           android:textSize="20dp"
                           android:textColor="@color/gen_black"
                           />
@@ -181,21 +181,21 @@
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:layout_marginTop="8dp"
-                      android:text="\u2022 Regular fit, full sleeve"
+                      android:text="\u2022 Clean power for Grid-Tied or Off-Grid applications"
                       android:textSize="12dp"
                       android:textColor="@color/gen_black"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="\u2022 Fabric: Cotton"
+                android:text="\u2022 Panels built to withstand snow, wind, rain, or hail"
                 android:textSize="12dp"
                 android:textColor="@color/gen_black"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="\u2022 Pattern: printed"
+                android:text="\u2022 25 year output warranty"
                 android:textSize="12dp"
                 android:textColor="@color/gen_black"/>
 

@@ -47,16 +47,16 @@
             android:layout_weight="1.8">
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="Item Name "
+                      android:text="Solar Panel "
                       android:textSize="10dp"
                       android:textStyle="bold"/>
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="Item descriptions"
+                      android:text="Clean power for Grid-Tied or Off-Grid applications"
                       android:textSize="10dp"/>
             <TextView android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="$ 8,999"
+                      android:text="$ 980.99"
                       android:textSize="12dp"
                       android:textColor="#4CAF50"/>
         </LinearLayout>

@@ -33,18 +33,62 @@ public class AppConfig {
                 @Field("contact") String contact,
                 Callback<Response> callback);
     }
+
+    public interface addprod {
+        @FormUrlEncoded
+        @POST("/products")
+        void addproduct(
+                @Field("productname") String productname,
+                @Field("productdescription") String productdescription,
+                @Field("price") String price,
+                @Field("quantity") String quantity,
+                @Field("category") String category,
+                Callback<Response> callback);
+    }
+
+    public interface feedback {
+        @FormUrlEncoded
+        @POST("/feedback")
+        void usercomments(
+                //@Field("name") String name,
+                @Field("description") String description,
+                @Field("email") String emailaddress,
+               // @Field("rating") String rating,
+                Callback<Response> callback);
+    }
     public interface comment {
         @FormUrlEncoded
         @POST("/comments")
         void usercomments(
-                //@Field("name") String name,
+                @Field("name") String name,
                 @Field("comment") String comment,
-               // @Field("rating") String rating,
+                @Field("rating") String rating,
+                Callback<Response> callback);
+    }
+
+    public interface payment {
+        @FormUrlEncoded
+        @POST("/payments")
+        void pay(
+                @Field("card") String card,
+//                @Field("cvc") String cvc,
+//                @Field("amount") String amount,
+//                @Field("email") String email,
                 Callback<Response> callback);
     }
 
     public interface read {
         @GET("/comments")
         void readData(Callback<Response> callback);
+    }
+
+    public interface readorders {
+        @GET("/products")
+        void readData(Callback<Response> callback);
+    }
+
+    public interface readsignin {
+        @GET("/user")
+        void logindata(Callback<Response> callback);
     }
 }

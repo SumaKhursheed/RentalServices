@@ -9,10 +9,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bossfight.rentalservices.R;
+import com.bossfight.rentalservices.customer.PaymentActivity;
 import com.bossfight.rentalservices.fragments.ImageListFragment;
 import com.bossfight.rentalservices.fragments.ViewPagerActivity;
 import com.bossfight.rentalservices.notification.NotificationCountSetClass;
-import com.bossfight.rentalservices.options.CartListActivity;
 import com.bossfight.rentalservices.customer.CustomerDashboard;
 import com.bossfight.rentalservices.utility.ImageUrlUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -59,11 +59,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
         textViewBuyNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ImageUrlUtils imageUrlUtils = new ImageUrlUtils();
-                imageUrlUtils.addCartListImageUri(stringImageUri);
-                CustomerDashboard.notificationCountCart++;
-                NotificationCountSetClass.setNotifyCount(CustomerDashboard.notificationCountCart);
-                startActivity(new Intent(ItemDetailsActivity.this, CartListActivity.class));
+                startActivity(new Intent(ItemDetailsActivity.this, PaymentActivity.class));
 
             }
         });

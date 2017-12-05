@@ -12,7 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.bossfight.rentalservices.R;
+import com.bossfight.rentalservices.customer.PaymentActivity;
 import com.bossfight.rentalservices.product.ItemDetailsActivity;
 import com.bossfight.rentalservices.customer.CustomerDashboard;
 import com.bossfight.rentalservices.utility.ImageUrlUtils;
@@ -29,6 +33,8 @@ public class CartListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart_list);
+        TextView textViewCancel = (TextView)findViewById(R.id.text_action_bottom1);
+        TextView textViewBuyNow = (TextView)findViewById(R.id.text_action_bottom2);
         mContext = CartListActivity.this;
 
         ImageUrlUtils imageUrlUtils = new ImageUrlUtils();
@@ -41,6 +47,22 @@ public class CartListActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(recylerViewLayoutManager);
         recyclerView.setAdapter(new CartListActivity.SimpleStringRecyclerViewAdapter(recyclerView, cartlistImageUri));
+
+        textViewBuyNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(CartListActivity.this, "Please select an item for payment", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        textViewCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(CartListActivity.this, CustomerDashboard.class));
+
+            }
+        });
     }
 
     public static class SimpleStringRecyclerViewAdapter

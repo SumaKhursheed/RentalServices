@@ -6,12 +6,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.bossfight.rentalservices.R;
 import com.bossfight.rentalservices.customer.CustomerDashboard;
+import com.bossfight.rentalservices.customer.ViewComments;
 import com.bossfight.rentalservices.utility.AppConfig;
+import com.bossfight.rentalservices.vendor.VendorDashboard;
+import com.google.gson.Gson;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,6 +35,8 @@ public class LoginActivity extends Activity
 
     public EditText email;
     public EditText password;
+    public RadioButton rd1;
+    public String em;
     //String BASE_URL = "https://smart-street.herokuapp.com";
     String BASE_URL = "https://gentle-cliffs-60386.herokuapp.com";
 
@@ -40,17 +47,82 @@ public class LoginActivity extends Activity
 
     }
 
-    public void onLogin(View v){
+    public void onLogin(View v) {
+
+        email = (EditText) findViewById(R.id.uname_login);
+        password = (EditText) findViewById(R.id.password_login);
+        em=email.getText().toString();
+        Log.d("email", email.getText().toString());
+        Log.d("password", password.getText().toString());
+        rd1 = (RadioButton) findViewById(R.id.vendor_rd);
+
+        if (rd1.isChecked())
+            LoginVendor();
+        else
+            LoginCustomer();
+    }
+
+    public void LoginVendor() {
 
         RestAdapter adapter = new RestAdapter.Builder()
                 .setEndpoint(BASE_URL) //Setting the Root URL
                 .build();
 
         AppConfig.signin api = adapter.create(AppConfig.signin.class);
-        email= (EditText)findViewById(R.id.uname_login);
-        password= (EditText)findViewById(R.id.password_login);
-        Log.d("email", email.getText().toString());
-        Log.d("password", password.getText().toString());
+        api.login(
+                email.getText().toString(),
+                password.getText().toString(),
+                new Callback<Response>() {
+                         @Override
+                         public void success(Response result, Response response) {
+
+                             try {
+
+                                 BufferedReader reader = new BufferedReader(new InputStreamReader(result.getBody().in()));
+                                 String resp;
+                                 resp = reader.readLine();
+                                 Log.d("success", "" + resp);
+
+                                 JSONObject jObj = new JSONObject(resp);
+                                 // int success = jObj.getInt("success");
+                                 String t = jObj.getString("token");
+
+                                 if(t != null){
+                                     Toast.makeText(getApplicationContext(), "Log in Successful", Toast.LENGTH_SHORT).show();
+                                     String token = jObj.getString("token");
+                                     Intent intent = new Intent();
+                                     intent.setClass(LoginActivity.this, VendorDashboard.class);
+                                     intent.putExtra("token", token);
+                                     startActivity(intent);
+                                 } else{
+                                     Toast.makeText(getApplicationContext(), "Log in Failed", Toast.LENGTH_SHORT).show();
+                                 }
+
+
+                             } catch (IOException e) {
+                                 Log.d("Exception", e.toString());
+                             } catch (JSONException e) {
+                                 Log.d("JsonException", e.toString());
+                             }
+                         }
+
+                         @Override
+                         public void failure(RetrofitError error) {
+                             Toast.makeText(LoginActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+                         }
+                     }
+        );
+
+    }
+
+    public void LoginCustomer() {
+
+        RestAdapter adapter = new RestAdapter.Builder()
+                .setEndpoint(BASE_URL) //Setting the Root URL
+                .build();
+
+        AppConfig.signin api = adapter.create(AppConfig.signin.class);
+
         api.login(
                 email.getText().toString(),
                 password.getText().toString(),
@@ -66,7 +138,7 @@ public class LoginActivity extends Activity
                             Log.d("success", "" + resp);
 
                             JSONObject jObj = new JSONObject(resp);
-                           // int success = jObj.getInt("success");
+                            // int success = jObj.getInt("success");
                             String t = jObj.getString("token");
 
                             if(t != null){
@@ -96,6 +168,7 @@ public class LoginActivity extends Activity
         );
 
     }
+
     public void Register(View view)
     {
         Intent intent = new Intent(LoginActivity.this, Registration.class);

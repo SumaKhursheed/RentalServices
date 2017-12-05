@@ -44,6 +44,12 @@
         <activity
             android:name=".options.CartListActivity"
             android:label="@string/my_cart" />
+        <activity
+            android:name=".customer.CommentActivity"
+            android:label="Reviews" />
+        <activity
+            android:name=".customer.ViewComments"
+            android:label="Reviews" />
         <activity android:name=".options.SearchResultActivity">
 
             <!-- to identify this activity as "searchable.xml" -->
@@ -61,7 +67,16 @@
             android:name=".customer.FeedbackActivity"
             android:label="@string/terms_conditions" />
         <activity android:name=".customer.ContactActivity" />
-        <activity android:name=".options.OrderlistActivity"></activity>
+        <activity android:name=".options.OrderlistActivity"
+            android:label="@string/my_orders"/>
+        <activity
+            android:name=".vendor.VendorDashboard"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".vendor.ProductActivity"
+            android:label="@string/my_products" />
+        <activity android:name=".customer.PaymentActivity"
+            android:label="@string/my_payment" />
     </application>
 
 </manifest>

@@ -27,6 +27,34 @@
         android:textAlignment="center"
         android:textColor="@color/colorPrimary" />
 
+    <RadioGroup
+        android:orientation="horizontal"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
+        android:layout_width="200dp"
+        android:layout_below="@+id/textView13"
+        android:layout_alignEnd="@+id/uname_login"
+        android:layout_marginEnd="14dp">
+
+        <RadioButton
+            android:text="Vendor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/vendor_rd"
+            android:buttonTint="#616161"
+            android:layout_weight="1"
+            android:checked="true" />
+
+        <RadioButton
+            android:text="Customer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/customer_rd"
+            android:buttonTint="#616161"
+            android:layout_weight="1"
+            android:checked="false" />
+    </RadioGroup>
+
     <EditText
         android:layout_width="250dp"
         android:layout_height="40dp"

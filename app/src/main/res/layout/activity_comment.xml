@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".customer.CommentActivity">
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E0E0E0"
+        android:layout_marginTop="20dp"
+        android:hint="Name" />
+
+    <EditText
+        android:id="@+id/desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:lines="10"
+        android:layout_alignLeft="@+id/name"
+        android:layout_alignStart="@+id/name"
+        android:background="#E0E0E0"
+        android:layout_below="@+id/name"
+        android:layout_marginTop="10dp"
+        android:hint="Please provide your reviews" />
+
+    <EditText
+        android:id="@+id/txtRatingValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E0E0E0"
+        android:layout_below="@+id/desc"
+        android:layout_marginTop="10dp"
+        android:hint="Rate the app" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="4"
+        android:stepSize="1.0"
+        android:rating="2.0"
+        android:layout_below="@+id/txtRatingValue"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Submit Feedback"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_add"
+        android:layout_width="250dp"
+        android:onClick="addComment"
+        android:textColor="#fff"
+        android:background="@color/colorPrimary"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/ratingBar"/>
+
+    <Button
+        android:text="Reviews"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:layout_width="250dp"
+        android:onClick="review"
+        android:textColor="#fff"
+        android:background="@color/colorPrimary"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/button_add" />
+
+
+</RelativeLayout>

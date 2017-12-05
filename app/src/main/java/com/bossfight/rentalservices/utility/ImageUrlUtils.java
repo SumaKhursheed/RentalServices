@@ -122,12 +122,12 @@ public class ImageUrlUtils {
     public static String[] getSolarUrls() {
         String[] urls = new String[]{
                 "https://static.pexels.com/photos/159397/solar-panel-array-power-sun-electricity-159397.jpeg",
-                "https://static.pexels.com/photos/704810/pexels-photo-704810.jpeg",
-                "https://stupiddope.com/wp-content/uploads/2015/05/Screen-Shot-2015-05-20-at-10.55.56-AM.png",
-                "https://images-na.ssl-images-amazon.com/images/I/71dSGIKOLtL._SL1500_.jpg",
-                "https://inhabitat.com/files/sun_bricks_main.jpg",
-                "https://static.techspot.com/images2/news/bigimage/2014/08/2014-08-08-image-3.jpg",
-                "https://media.treehugger.com/assets/images/2015/04/3506269_orig.jpg.650x0_q70_crop-smart.jpg",
+//                "https://static.pexels.com/photos/704810/pexels-photo-704810.jpeg",
+//                "https://stupiddope.com/wp-content/uploads/2015/05/Screen-Shot-2015-05-20-at-10.55.56-AM.png",
+//                "https://images-na.ssl-images-amazon.com/images/I/71dSGIKOLtL._SL1500_.jpg",
+//                "https://inhabitat.com/files/sun_bricks_main.jpg",
+//                "https://static.techspot.com/images2/news/bigimage/2014/08/2014-08-08-image-3.jpg",
+//                "https://media.treehugger.com/assets/images/2015/04/3506269_orig.jpg.650x0_q70_crop-smart.jpg",
         };
         return urls;
     }

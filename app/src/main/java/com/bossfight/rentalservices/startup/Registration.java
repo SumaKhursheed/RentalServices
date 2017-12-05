@@ -1,15 +1,19 @@
 package com.bossfight.rentalservices.startup;
 
+import android.app.AlertDialog;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.bossfight.rentalservices.utility.AppConfig;
 import com.bossfight.rentalservices.R;
+import com.bossfight.rentalservices.utility.AppConfig;
+import com.google.zxing.Result;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,16 +22,20 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class Registration extends AppCompatActivity {
+public class Registration extends AppCompatActivity{
 
-   // String BASE_URL = "https://smart-street.herokuapp.com";
-   String BASE_URL = "https://gentle-cliffs-60386.herokuapp.com";
+    public String ScanRegistrationBarCode;
+    public JSONObject jsonObj;
+
+    String BASE_URL = "https://gentle-cliffs-60386.herokuapp.com";
     public EditText firstname, lastname, address, email, password, contact;
+    private ZXingScannerView mScannerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +72,6 @@ public class Registration extends AppCompatActivity {
                             Log.d("success", "" + resp);
 
                             JSONObject jObj = new JSONObject(resp);
-                            //int success = jObj.getInt("success");
                             String t = jObj.getString("token");
 
                             if(t != null){
@@ -90,6 +97,43 @@ public class Registration extends AppCompatActivity {
                     }
                 }
         );
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if(result != null){
+            if(result.getContents()==null){
+                Toast.makeText(this, "You cancelled the scanning", Toast.LENGTH_LONG).show();
+            }
+            else {
+                ScanRegistrationBarCode = result.getContents();
+                try {
+                    jsonObj = new JSONObject(ScanRegistrationBarCode);
+                    firstname.setText(jsonObj.getString("firstname"));
+                    lastname.setText(jsonObj.getString("lastname"));
+                    email.setText(jsonObj.getString("email"));
+                    address.setText(jsonObj.getString("address"));
+                    contact.setText(jsonObj.getString("contact"));
+                    Toast.makeText(this, result.getContents(),Toast.LENGTH_LONG).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
+        else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+    public void onClick_scan(View v) {
+        IntentIntegrator integrator = new IntentIntegrator(this);
+        integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+        integrator.setPrompt("Scan");
+        integrator.setCameraId(0);
+        integrator.setBeepEnabled(false);
+        integrator.setBarcodeImageEnabled(false);
+        integrator.initiateScan();
     }
 
     public void login(View v) {

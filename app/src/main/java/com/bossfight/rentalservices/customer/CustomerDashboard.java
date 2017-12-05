@@ -21,6 +21,7 @@ import com.bossfight.rentalservices.R;
 import com.bossfight.rentalservices.fragments.ImageListFragment;
 import com.bossfight.rentalservices.notification.NotificationCountSetClass;
 import com.bossfight.rentalservices.options.CartListActivity;
+import com.bossfight.rentalservices.options.OrderlistActivity;
 import com.bossfight.rentalservices.options.SearchResultActivity;
 import com.bossfight.rentalservices.options.WishlistActivity;
 import com.bossfight.rentalservices.startup.LoginActivity;
@@ -161,8 +162,14 @@ public class CustomerDashboard extends AppCompatActivity
         else if (id == R.id.feedback){
             startActivity(new Intent(CustomerDashboard.this, FeedbackActivity.class));
         }
-        else {
+        else if (id == R.id.reviews){
+            startActivity(new Intent(CustomerDashboard.this, CommentActivity.class));
+        }
+        else if (id == R.id.contact_us){
             startActivity(new Intent(CustomerDashboard.this, ContactActivity.class));
+        }
+        else {
+            startActivity(new Intent(CustomerDashboard.this, OrderlistActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

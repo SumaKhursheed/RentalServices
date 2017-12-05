@@ -3,47 +3,114 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-    <LinearLayout android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/activity_horizontal_margin"
-        android:orientation="horizontal"
-        android:weightSum="3">
-        <com.facebook.drawee.view.SimpleDraweeView xmlns:fresco="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/image_orderlist" android:layout_width="0dp"
-            android:layout_height="80dp"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
-            fresco:placeholderImage="@color/stay_color"/>
-        <LinearLayout  android:id="@+id/layout_item_desc"
-            android:layout_width="0dp"
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1.8"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin">
-            <TextView android:layout_width="wrap_content"
+            android:divider="?android:attr/dividerHorizontal"
+            android:showDividers="middle"
+            android:id="@+id/table">
+            <TableRow>
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/activity_horizontal_margin"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+                 <LinearLayout  android:id="@+id/layout_item_desc2"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Denim Shirt"
-                android:textSize="10dp"
-                android:textStyle="bold"/>
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Slim fit, cotton"
-                android:textSize="10dp"/>
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="$ 8,999"
-                android:textSize="12dp"
-                android:textColor="#4CAF50"/>
-        </LinearLayout>
-        <ImageView android:id="@+id/ic_orderlist"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.2"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/ic_delete_black_24dp"/>
-    </LinearLayout>
-    <View android:layout_width="match_parent"
-        android:layout_height="@dimen/view_width_xsmall"
-        android:background="@color/grey_light"/>
+                android:orientation="vertical"
+                android:layout_weight="1.8"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin">
+                <TextView android:layout_width="wrap_content"
+                    android:id="@+id/item_name"
+                    android:layout_height="wrap_content"
+                    android:text="Denim Shirt"
+                    android:textSize="10dp"
+                    android:textStyle="bold"/>
+                </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/activity_horizontal_margin"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+                     <LinearLayout  android:id="@+id/layout_item_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1.8"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin">
+                    <TextView android:layout_width="wrap_content"
+                        android:id="@+id/item_price"
+                        android:layout_height="wrap_content"
+                        android:textColor="#559b13"
+                        android:text="$"
+                        android:textSize="10dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+                </LinearLayout>
+            </TableRow>
+
+
+
+        </TableLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--<LinearLayout android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:padding="@dimen/activity_horizontal_margin"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:weightSum="3">-->
+        <!--<LinearLayout  android:id="@+id/layout_item_desc"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_weight="1.8"-->
+            <!--android:layout_marginLeft="@dimen/activity_horizontal_margin">-->
+            <!--<TextView android:layout_width="wrap_content"-->
+                <!--android:id="@+id/item_name2"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Denim Shirt"-->
+                <!--android:textSize="10dp"-->
+                <!--android:textStyle="bold"/>-->
+            <!--<TextView android:layout_width="wrap_content"-->
+                <!--android:id="@+id/item_desc"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Slim fit, cotton"-->
+                <!--android:textSize="10dp"/>-->
+            <!--<TextView android:layout_width="wrap_content"-->
+                <!--android:id="@+id/item_price"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="$ 8,999"-->
+                <!--android:textSize="12dp"-->
+                <!--android:textColor="#4CAF50"/>-->
+        <!--</LinearLayout>-->
+        <!--<ImageView android:id="@+id/ic_orderlist"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="0.2"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:src="@drawable/ic_delete_black_24dp"/>-->
+    <!--</LinearLayout>-->
+        <!--<View android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/view_width_xsmall"-->
+            <!--android:background="@color/grey_light"/>-->
+    </ScrollView>
+
 </LinearLayout>
 

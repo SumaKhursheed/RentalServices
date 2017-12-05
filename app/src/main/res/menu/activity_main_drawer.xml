@@ -46,6 +46,9 @@
                 android:id="@+id/feedback"
                 android:title="@string/terms_conditions" />
             <item
+                android:id="@+id/reviews"
+                android:title="@string/reviews" />
+            <item
                 android:id="@+id/help_center"
                 android:title="@string/help_center" />
         </menu>
