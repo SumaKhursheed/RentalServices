@@ -77,12 +77,28 @@ public class AppConfig {
                 Callback<Response> callback);
     }
 
+    public interface pay {
+        @FormUrlEncoded
+        @POST("/orders")
+        void pay(
+                @Field("productname") String card,
+                @Field("productdescription") String productdescription,
+                @Field("quantity") String quantity,
+                @Field("price") String price,
+                Callback<Response> callback);
+    }
+
     public interface read {
         @GET("/comments")
         void readData(Callback<Response> callback);
     }
 
     public interface readorders {
+        @GET("/orders")
+        void readData(Callback<Response> callback);
+    }
+
+    public interface readproducts {
         @GET("/products")
         void readData(Callback<Response> callback);
     }

@@ -76,7 +76,7 @@ public class OrderlistActivity extends AppCompatActivity {
                                  JSONObject jObj = new JSONObject(resp);
                                  int success = jObj.getInt("success");
 
-                                 JSONArray obj = jObj.getJSONArray("product");
+                                 JSONArray obj = jObj.getJSONArray("Order");
 
                                  int i;
                                  n="";
@@ -85,9 +85,9 @@ public class OrderlistActivity extends AppCompatActivity {
                                      final JSONObject jObject = obj.getJSONObject(i);
 
                                          if (jObject != null) {
-                                             n += jObject.getString("name") + "\n\n";
+                                             n += jObject.getString("productname") + "\n\n";
                                             // d += jObject.getString("comment") + "\n\n";
-                                             p += jObject.getString("price") + "\n\n";
+                                             p += "$" + jObject.getString("price") + "\n\n";
 
                                              name.setText(n);
                                              price.setText(p);

@@ -4,6 +4,12 @@ import java.util.ArrayList;
 
 public class ImageUrlUtils {
     static ArrayList<String> wishlistImageUri = new ArrayList<>();
+    static ArrayList<String> wishListName = new ArrayList<>();
+    static ArrayList<String> wishListDesc = new ArrayList<>();
+    static ArrayList<String> wishListPrice = new ArrayList<>();
+    static ArrayList<String> cartListName = new ArrayList<>();
+    static ArrayList<String> cartListDesc = new ArrayList<>();
+    static ArrayList<String> cartListPrice = new ArrayList<>();
     static ArrayList<String> cartListImageUri = new ArrayList<>();
     static ArrayList<String> orderListImageUri = new ArrayList<>();
 
@@ -122,7 +128,7 @@ public class ImageUrlUtils {
     public static String[] getSolarUrls() {
         String[] urls = new String[]{
                 "https://static.pexels.com/photos/159397/solar-panel-array-power-sun-electricity-159397.jpeg",
-//                "https://static.pexels.com/photos/704810/pexels-photo-704810.jpeg",
+                "https://static.pexels.com/photos/704810/pexels-photo-704810.jpeg",
 //                "https://stupiddope.com/wp-content/uploads/2015/05/Screen-Shot-2015-05-20-at-10.55.56-AM.png",
 //                "https://images-na.ssl-images-amazon.com/images/I/71dSGIKOLtL._SL1500_.jpg",
 //                "https://inhabitat.com/files/sun_bricks_main.jpg",
@@ -135,9 +141,9 @@ public class ImageUrlUtils {
     public static String[] getHvacUrls() {
         String[] urls = new String[]{
                 "http://images.dunelm.com/i/dm/1000078711_main.jpg?$v8srpgrid$&img404=noimagedefault",
-                "https://www.canstarblue.com.au/wp-content/uploads/2016/10/Split-system-air-conditioner.jpg",
-                "http://images.nailsmag.com/post/M-exhaust-vent-nailsmag-1.jpg",
-                "https://static1.squarespace.com/static/52865350e4b045ae0cc9df4c/529e0cf0e4b066cb1f3f7a63/52b4f1ebe4b060add9439b18/1387590125426/Alpha_Mechanical_Ventilation_2e.jpg",
+//                "https://www.canstarblue.com.au/wp-content/uploads/2016/10/Split-system-air-conditioner.jpg",
+//                "http://images.nailsmag.com/post/M-exhaust-vent-nailsmag-1.jpg",
+//                "https://static1.squarespace.com/static/52865350e4b045ae0cc9df4c/529e0cf0e4b066cb1f3f7a63/52b4f1ebe4b060add9439b18/1387590125426/Alpha_Mechanical_Ventilation_2e.jpg",
         };
         return urls;
     }
@@ -145,10 +151,11 @@ public class ImageUrlUtils {
     public static String[] getSmartUrls() {
         String[] urls = new String[]{
                 "https://cdn.shopify.com/s/files/1/1100/5760/products/81qzLmYUd-L._SL1500_large.jpg?v=1495436099",
-                "https://assets.pcmag.com/media/images/455753-ge-link-connected-bulb.jpg?thumb=y",
-                "https://www.allaboutyoursecurity.com/wp-content/uploads/2016/10/2gig-security-system.png",
-                "https://cdn.solarbotics.com/products/photos/f4195a9ac70dca62f2e43fa3400d826d/51755-IMG_7505.jpg",
-                "http://www.ikea.com/ms/en_US/media/visual_nav_images/seo_image/Smart%20lighting%20kits__Smart_Lighting_Vis_Nav_01.jpg",
+//                "https://assets.pcmag.com/media/images/455753-ge-link-connected-bulb.jpg?thumb=y",
+//                "https://www.allaboutyoursecurity.com/wp-content/uploads/2016/10/2gig-security-system.png",
+//                "https://cdn.solarbotics.com/products/photos/f4195a9ac70dca62f2e43fa3400d826d/51755-IMG_7505.jpg",
+//                "http://www.ikea.com/ms/en_US/media/visual_nav_images/seo_image/Smart%20lighting%20kits__Smart_Lighting_Vis_Nav_01.jpg",
+//
         };
         return urls;
     }
@@ -156,11 +163,12 @@ public class ImageUrlUtils {
     public static String[] getWindowUrls() {
         String[] urls = new String[]{
                 "https://www.mediashower.com/img/349/bamboo-decorative-window-film-32-1.jpg",
-                "https://www.homedepot.com/hdus/en_US/DTCCOMNEW/fetch/DIY_Projects_and_Ideas/Decor/Guides/installing-window-film-HT-BG-DC-window-film-hero.jpg",
-                "https://cdn.shopify.com/s/files/1/1553/0873/products/tropical-oasis-privacy-window-film-10_large.jpg?v=1486587837",
-                "https://images-na.ssl-images-amazon.com/images/I/71WF09cDfGL._SY355_.jpg",
-                "https://images-na.ssl-images-amazon.com/images/I/61my%2Bd-J-EL._SY355_.jpg",
-                "https://www.windowfilm.co.uk/site/imagerotators/50/635/privacy-window-film-by-the-window-film-company-4.jpg?w=653&h=285&mode=pad&bgcolor=black",
+//                "https://www.homedepot.com/hdus/en_US/DTCCOMNEW/fetch/DIY_Projects_and_Ideas/Decor/Guides/installing-window-film-HT-BG-DC-window-film-hero.jpg",
+//                "https://cdn.shopify.com/s/files/1/1553/0873/products/tropical-oasis-privacy-window-film-10_large.jpg?v=1486587837",
+//                "https://images-na.ssl-images-amazon.com/images/I/71WF09cDfGL._SY355_.jpg",
+//                "https://images-na.ssl-images-amazon.com/images/I/61my%2Bd-J-EL._SY355_.jpg",
+//                "https://www.windowfilm.co.uk/site/imagerotators/50/635/privacy-window-film-by-the-window-film-company-4.jpg?w=653&h=285&mode=pad&bgcolor=black",
+//
         };
         return urls;
     }
@@ -171,15 +179,42 @@ public class ImageUrlUtils {
         this.wishlistImageUri.add(0,wishlistImageUri);
     }
 
+    public void addWishListName(String wishnamelist) {
+        this.wishListName.add(0,wishnamelist);
+    }
+
+    public void addWishListPrice(String wishpricelist) {
+        this.wishListPrice.add(0,wishpricelist);
+    }
+
+    public void addWishListDesc(String wishdesclist) {
+        this.wishListDesc.add(0,wishdesclist);
+    }
+
     public void removeWishlistImageUri(int position) {
         this.wishlistImageUri.remove(position);
     }
 
     public ArrayList<String> getWishlistImageUri(){ return this.wishlistImageUri; }
+    public ArrayList<String> getWishListName(){ return this.wishListName; }
+    public ArrayList<String> getWishListDesc(){ return this.wishListDesc; }
+    public ArrayList<String> getWishListPrice(){ return this.wishListPrice; }
 
     // Methods for Cart
     public void addCartListImageUri(String wishlistImageUri) {
         this.cartListImageUri.add(0,wishlistImageUri);
+    }
+
+    public void addCartListName(String namelist) {
+        this.cartListName.add(0,namelist);
+    }
+
+    public void addCartListPrice(String pricelist) {
+        this.cartListPrice.add(0,pricelist);
+    }
+
+    public void addCartListDesc(String desclist) {
+        this.cartListDesc.add(0,desclist);
     }
 
     public void removeCartListImageUri(int position) {
@@ -187,6 +222,9 @@ public class ImageUrlUtils {
     }
 
     public ArrayList<String> getCartListImageUri(){ return this.cartListImageUri; }
+    public ArrayList<String> getCartListName(){ return this.cartListName; }
+    public ArrayList<String> getCartListDesc(){ return this.cartListDesc; }
+    public ArrayList<String> getCartListPrice(){ return this.cartListPrice; }
 
     //Methods for orders
     public void addOrderListImageUri(String wishlistImageUri) {

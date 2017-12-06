@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.bossfight.rentalservices.R;
 import com.bossfight.rentalservices.product.ItemDetailsActivity;
@@ -22,6 +23,9 @@ import java.util.ArrayList;
 
 import static com.bossfight.rentalservices.fragments.ImageListFragment.STRING_IMAGE_POSITION;
 import static com.bossfight.rentalservices.fragments.ImageListFragment.STRING_IMAGE_URI;
+import static com.bossfight.rentalservices.fragments.ImageListFragment.STRING_PROD_DESC;
+import static com.bossfight.rentalservices.fragments.ImageListFragment.STRING_PROD_NAME;
+import static com.bossfight.rentalservices.fragments.ImageListFragment.STRING_PROD_PRICE;
 
 public class WishlistActivity extends AppCompatActivity {
     private static Context mContext;
@@ -34,17 +38,21 @@ public class WishlistActivity extends AppCompatActivity {
 
         ImageUrlUtils imageUrlUtils = new ImageUrlUtils();
         ArrayList<String> wishlistImageUri =imageUrlUtils.getWishlistImageUri();
+        ArrayList<String> wishlistName =imageUrlUtils.getWishListName();
+        ArrayList<String> wishlistDesc =imageUrlUtils.getWishListDesc();
+        ArrayList<String> wishlistPrice =imageUrlUtils.getWishListPrice();
+
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.recyclerview);
         RecyclerView.LayoutManager recylerViewLayoutManager = new LinearLayoutManager(mContext);
 
         recyclerView.setLayoutManager(recylerViewLayoutManager);
-        recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(recyclerView, wishlistImageUri));
+        recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(recyclerView, wishlistImageUri, wishlistName, wishlistDesc, wishlistPrice));
     }
 
     public static class SimpleStringRecyclerViewAdapter
             extends RecyclerView.Adapter<WishlistActivity.SimpleStringRecyclerViewAdapter.ViewHolder> {
 
-        private ArrayList<String> mWishlistImageUri;
+        private ArrayList<String> mWishlistImageUri, mWishlistName, mWishlistDesc, mWishlistPrice;
         private RecyclerView mRecyclerView;
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -52,17 +60,24 @@ public class WishlistActivity extends AppCompatActivity {
             public final SimpleDraweeView mImageView;
             public final LinearLayout mLayoutItem;
             public final ImageView mImageViewWishlist;
+            public final TextView name, description, price;
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
                 mImageView = (SimpleDraweeView) view.findViewById(R.id.image_wishlist);
+                name = (TextView) view.findViewById(R.id.name);
+                description = (TextView) view.findViewById(R.id.description);
+                price = (TextView) view.findViewById(R.id.price);
                 mLayoutItem = (LinearLayout) view.findViewById(R.id.layout_item_desc);
                 mImageViewWishlist = (ImageView) view.findViewById(R.id.ic_wishlist);
             }
         }
 
-        public SimpleStringRecyclerViewAdapter(RecyclerView recyclerView, ArrayList<String> wishlistImageUri) {
+        public SimpleStringRecyclerViewAdapter(RecyclerView recyclerView, ArrayList<String> wishlistImageUri, ArrayList<String> wishnamelist, ArrayList<String> wishdesclist, ArrayList<String> wishpricelist) {
             mWishlistImageUri = wishlistImageUri;
+            mWishlistName = wishnamelist;
+            mWishlistDesc = wishdesclist;
+            mWishlistPrice = wishpricelist;
             mRecyclerView = recyclerView;
         }
 
@@ -87,12 +102,19 @@ public class WishlistActivity extends AppCompatActivity {
         public void onBindViewHolder(final WishlistActivity.SimpleStringRecyclerViewAdapter.ViewHolder holder, final int position) {
             final Uri uri = Uri.parse(mWishlistImageUri.get(position));
             holder.mImageView.setImageURI(uri);
+            holder.name.setText(mWishlistName.get(position));
+            holder.description.setText(mWishlistDesc.get(position));
+            holder.price.setText(mWishlistPrice.get(position));
+
             holder.mLayoutItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(mContext, ItemDetailsActivity.class);
                     intent.putExtra(STRING_IMAGE_URI,mWishlistImageUri.get(position));
                     intent.putExtra(STRING_IMAGE_POSITION, position);
+                    intent.putExtra(STRING_PROD_NAME, holder.name.getText().toString());
+                    intent.putExtra(STRING_PROD_DESC, holder.description.getText().toString());
+                    intent.putExtra(STRING_PROD_PRICE, holder.price.getText().toString());
                     mContext.startActivity(intent);
                 }
             });

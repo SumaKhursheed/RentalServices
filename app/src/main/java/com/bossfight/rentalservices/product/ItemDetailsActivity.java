@@ -19,7 +19,10 @@ import com.facebook.drawee.view.SimpleDraweeView;
 
 public class ItemDetailsActivity extends AppCompatActivity {
     int imagePosition;
-    String stringImageUri;
+    public static final String STRING_PROD_NAME = "ProductName";
+    public static final String STRING_PROD_PRICE = "ProductPrice";
+    String stringImageUri, pname, pdesc, pprice;
+    TextView name, description, price;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,12 +30,21 @@ public class ItemDetailsActivity extends AppCompatActivity {
         SimpleDraweeView mImageView = (SimpleDraweeView)findViewById(R.id.image1);
         TextView textViewAddToCart = (TextView)findViewById(R.id.text_action_bottom1);
         TextView textViewBuyNow = (TextView)findViewById(R.id.text_action_bottom2);
+        name = (TextView)findViewById(R.id.name);
+        description = (TextView)findViewById(R.id.description);
+        price = (TextView)findViewById(R.id.price);
 
         //Getting image uri from previous screen
         if (getIntent() != null) {
             stringImageUri = getIntent().getStringExtra(ImageListFragment.STRING_IMAGE_URI);
+            pname = getIntent().getStringExtra(ImageListFragment.STRING_PROD_NAME);
+            pdesc = getIntent().getStringExtra(ImageListFragment.STRING_PROD_DESC);
+            pprice = getIntent().getStringExtra(ImageListFragment.STRING_PROD_PRICE);
             imagePosition = getIntent().getIntExtra(ImageListFragment.STRING_IMAGE_URI,0);
         }
+        name.setText(pname);
+        description.setText(pdesc);
+        price.setText(pprice);
         Uri uri = Uri.parse(stringImageUri);
         mImageView.setImageURI(uri);
         mImageView.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +62,9 @@ public class ItemDetailsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 ImageUrlUtils imageUrlUtils = new ImageUrlUtils();
                 imageUrlUtils.addCartListImageUri(stringImageUri);
+                imageUrlUtils.addCartListName(pname);
+                imageUrlUtils.addCartListDesc(pdesc);
+                imageUrlUtils.addCartListPrice(pprice);
                 Toast.makeText(ItemDetailsActivity.this,"Item added to cart.",Toast.LENGTH_SHORT).show();
                 CustomerDashboard.notificationCountCart++;
                 NotificationCountSetClass.setNotifyCount(CustomerDashboard.notificationCountCart);
@@ -59,7 +74,11 @@ public class ItemDetailsActivity extends AppCompatActivity {
         textViewBuyNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ItemDetailsActivity.this, PaymentActivity.class));
+                //startActivity(new Intent(ItemDetailsActivity.this, PaymentActivity.class));
+                Intent intent = new Intent(ItemDetailsActivity.this, PaymentActivity.class);
+                intent.putExtra(STRING_PROD_NAME, name.getText().toString());
+                intent.putExtra(STRING_PROD_PRICE, price.getText().toString());
+                ItemDetailsActivity.this.startActivity(intent);
 
             }
         });

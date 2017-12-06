@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.bossfight.rentalservices.product.ItemDetailsActivity;
 import com.bossfight.rentalservices.utility.AppConfig;
 import com.bossfight.rentalservices.R;
 
@@ -26,7 +27,8 @@ import retrofit.client.Response;
 public class PaymentActivity extends AppCompatActivity {
 
     String BASE_URL = "https://gentle-cliffs-60386.herokuapp.com";
-    public EditText name, card, cvc, exp;
+    public EditText name, card, cvc, exp, prodname, price, pricewo;
+    String pname, pprice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,18 +37,29 @@ public class PaymentActivity extends AppCompatActivity {
         card= (EditText)findViewById(R.id.cardnumber);
         cvc= (EditText)findViewById(R.id.cvc);
         exp= (EditText)findViewById(R.id.exp);
+        price= (EditText)findViewById(R.id.price);
+        pricewo= (EditText)findViewById(R.id.price);
+        prodname= (EditText)findViewById(R.id.productname);
+
+        if (getIntent() != null) {
+            pname = getIntent().getStringExtra(ItemDetailsActivity.STRING_PROD_NAME);
+            pprice = getIntent().getStringExtra(ItemDetailsActivity.STRING_PROD_PRICE);
+        }
+
+        price.setText("$" + pprice);
+        prodname.setText(pname);
     }
     public void onPay(View v){
         RestAdapter adapter = new RestAdapter.Builder()
                 .setEndpoint(BASE_URL) //Setting the Root URL
                 .build();
 
-        AppConfig.payment api = adapter.create(AppConfig.payment.class);
+        AppConfig.pay api = adapter.create(AppConfig.pay.class);
         api.pay(
-                card.getText().toString(),
-//                cvc.getText().toString(),
-//                amount.getText().toString(),
-//                email.getText().toString(),
+                prodname.getText().toString(),
+                name.getText().toString(),
+                cvc.getText().toString(),
+                pprice,
                 new Callback<Response>() {
                     @Override
                     public void success(Response result, Response response) {

@@ -35,10 +35,12 @@
                           android:layout_height="wrap_content"
                           android:text="Solar Panel"
                           android:textSize="16dp"
+                          android:id="@+id/name"
                           android:textColor="@color/gen_black"/>
                 <TextView android:layout_width="wrap_content"
                           android:layout_height="wrap_content"
                           android:layout_marginTop="8dp"
+                          android:id="@+id/price"
                           android:text="$ 980.99"
                           android:textSize="20dp"
                           android:textColor="@color/gen_black"
@@ -181,6 +183,7 @@
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:layout_marginTop="8dp"
+                      android:id="@+id/description"
                       android:text="\u2022 Clean power for Grid-Tied or Off-Grid applications"
                       android:textSize="12dp"
                       android:textColor="@color/gen_black"/>
@@ -188,14 +191,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="\u2022 Panels built to withstand snow, wind, rain, or hail"
+                android:text="\u2022 Fast Delivery"
                 android:textSize="12dp"
                 android:textColor="@color/gen_black"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="\u2022 25 year output warranty"
+                android:text="\u2022 Money back gaurantee"
                 android:textSize="12dp"
                 android:textColor="@color/gen_black"/>
 

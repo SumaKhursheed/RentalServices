@@ -28,8 +28,8 @@
                 <TextView android:layout_width="wrap_content"
                     android:id="@+id/item_name"
                     android:layout_height="wrap_content"
-                    android:text="Denim Shirt"
-                    android:textSize="10dp"
+                    android:text="Product Name"
+                    android:textSize="16dp"
                     android:textStyle="bold"/>
                 </LinearLayout>
                 </LinearLayout>
@@ -49,8 +49,8 @@
                         android:id="@+id/item_price"
                         android:layout_height="wrap_content"
                         android:textColor="#559b13"
-                        android:text="$"
-                        android:textSize="10dp"
+                        android:text="Price"
+                        android:textSize="16dp"
                         android:textStyle="bold"/>
                 </LinearLayout>
                 </LinearLayout>
