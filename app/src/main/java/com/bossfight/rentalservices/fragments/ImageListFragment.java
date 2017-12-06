@@ -62,11 +62,13 @@ public class ImageListFragment extends Fragment {
     public static final String STRING_PROD_PRICE = "ProductPrice";
     public static final String STRING_IMAGE_POSITION = "ImagePosition";
     private static CustomerDashboard mActivity;
+    public static ImageListFragment iActivity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mActivity = (CustomerDashboard) getActivity();
+        iActivity = (ImageListFragment.this);
     }
 
     @Override
@@ -81,34 +83,54 @@ public class ImageListFragment extends Fragment {
         ArrayList<String> productlistName= null;
         ArrayList<String> productlistDesc=null;
         ArrayList<String> productlistPrice=null;
+//Solar list
+        ArrayList<String> sproductlistName= null;
+        ArrayList<String> sproductlistDesc=null;
+        ArrayList<String> sproductlistPrice=null;
+//HVAC list
+        ArrayList<String> hproductlistName= null;
+        ArrayList<String> hproductlistDesc=null;
+        ArrayList<String> hproductlistPrice=null;
+//Smart list
+        ArrayList<String> tproductlistName= null;
+        ArrayList<String> tproductlistDesc=null;
+        ArrayList<String> tproductlistPrice=null;
+//Window
+        ArrayList<String> wproductlistName= null;
+        ArrayList<String> wproductlistDesc=null;
+        ArrayList<String> wproductlistPrice=null;
+
         ImageUrlUtils imageUrlUtils = new ImageUrlUtils();
 
         if (ImageListFragment.this.getArguments().getInt("type") == 1){
             items =ImageUrlUtils.getSolarUrls();
-            productlistName =imageUrlUtils.getProductListName();
-            productlistDesc =imageUrlUtils.getProductListDesc();
-            productlistPrice =imageUrlUtils.getProductListPrice();
+            sproductlistName =imageUrlUtils.getsProductListName();
+            sproductlistDesc =imageUrlUtils.getsProductListDesc();
+            sproductlistPrice =imageUrlUtils.getsProductListPrice();
         }else if (ImageListFragment.this.getArguments().getInt("type") == 2){
             items =ImageUrlUtils.getHvacUrls();
-            productlistName =imageUrlUtils.getProductListName();
-            productlistDesc =imageUrlUtils.getProductListDesc();
-            productlistPrice =imageUrlUtils.getProductListPrice();
+            hproductlistName =imageUrlUtils.gethProductListName();
+            hproductlistDesc =imageUrlUtils.gethProductListDesc();
+            hproductlistPrice =imageUrlUtils.gethProductListPrice();
         }else if (ImageListFragment.this.getArguments().getInt("type") == 3){
             items =ImageUrlUtils.getSmartUrls();
-            productlistName =imageUrlUtils.getProductListName();
-            productlistDesc =imageUrlUtils.getProductListDesc();
-            productlistPrice =imageUrlUtils.getProductListPrice();
+            tproductlistName =imageUrlUtils.gettProductListName();
+            tproductlistDesc =imageUrlUtils.gettProductListDesc();
+            tproductlistPrice =imageUrlUtils.gettProductListPrice();
         }else if (ImageListFragment.this.getArguments().getInt("type") == 4){
             items =ImageUrlUtils.getWindowUrls();
-            productlistName =imageUrlUtils.getProductListName();
-            productlistDesc =imageUrlUtils.getProductListDesc();
-            productlistPrice =imageUrlUtils.getProductListPrice();
+            wproductlistName =imageUrlUtils.getwProductListName();
+            wproductlistDesc =imageUrlUtils.getwProductListDesc();
+            wproductlistPrice =imageUrlUtils.getwProductListPrice();
         }else {
             items = ImageUrlUtils.getImageUrls();
+//            sproductlistName =imageUrlUtils.getsProductListName();
+//            sproductlistDesc =imageUrlUtils.getsProductListDesc();
+//            sproductlistPrice =imageUrlUtils.getsProductListPrice();
         }
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(recyclerView, items, productlistName, productlistDesc, productlistPrice));
+        recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(recyclerView, items, sproductlistName, sproductlistDesc, sproductlistPrice, hproductlistName, hproductlistDesc, hproductlistPrice, tproductlistName, tproductlistDesc, tproductlistPrice, wproductlistName, wproductlistDesc, wproductlistPrice));
 
     }
 
@@ -116,7 +138,7 @@ public class ImageListFragment extends Fragment {
             extends RecyclerView.Adapter<SimpleStringRecyclerViewAdapter.ViewHolder> {
 
         private String[] mValues;
-        private ArrayList<String> mProductlistName, mProductlistDesc, mProductlistPrice;
+        private ArrayList<String> msProductlistName, msProductlistDesc, msProductlistPrice, mhProductlistName, mhProductlistDesc, mhProductlistPrice, mtProductlistName, mtProductlistDesc, mtProductlistPrice, mwProductlistName, mwProductlistDesc, mwProductlistPrice;
         private RecyclerView mRecyclerView;
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -141,11 +163,24 @@ public class ImageListFragment extends Fragment {
             }
         }
 
-        public SimpleStringRecyclerViewAdapter(RecyclerView recyclerView, String[] items, ArrayList<String> productlistName, ArrayList<String> productlistDesc, ArrayList<String> productlistPrice) {
+        public SimpleStringRecyclerViewAdapter(RecyclerView recyclerView, String[] items, ArrayList<String> sproductlistName, ArrayList<String> sproductlistDesc, ArrayList<String> sproductlistPrice, ArrayList<String> hproductlistName, ArrayList<String> hproductlistDesc, ArrayList<String> hproductlistPrice, ArrayList<String> tproductlistName, ArrayList<String> tproductlistDesc, ArrayList<String> tproductlistPrice, ArrayList<String> wproductlistName, ArrayList<String> wproductlistDesc, ArrayList<String> wproductlistPrice) {
             mValues = items;
-            mProductlistName = productlistName;
-            mProductlistDesc = productlistDesc;
-            mProductlistPrice = productlistPrice;
+            //Solar list
+            msProductlistName = sproductlistName;
+            msProductlistDesc = sproductlistDesc;
+            msProductlistPrice = sproductlistPrice;
+            //HVAC list
+            mhProductlistName = hproductlistName;
+            mhProductlistDesc = hproductlistDesc;
+            mhProductlistPrice = hproductlistPrice;
+            //Smart list
+            mtProductlistName = tproductlistName;
+            mtProductlistDesc = tproductlistDesc;
+            mtProductlistPrice = tproductlistPrice;
+            //Window list
+            mwProductlistName = wproductlistName;
+            mwProductlistDesc = wproductlistDesc;
+            mwProductlistPrice = wproductlistPrice;
             mRecyclerView = recyclerView;
         }
 
@@ -170,11 +205,81 @@ public class ImageListFragment extends Fragment {
         public void onBindViewHolder(final ViewHolder holder, final int position) {
 
             final Uri uri = Uri.parse(mValues[position]);
-            Log.isLoggable("POSITIONNNN", position);
-            holder.mImageView.setImageURI(uri);
-            holder.name.setText(mProductlistName.get(position));
-            holder.description.setText(mProductlistDesc.get(position));
-            holder.price.setText(mProductlistPrice.get(position));
+
+//            if(msProductlistName.size()!= 0) {
+//            holder.name.setText(msProductlistName.get(position));
+//            holder.description.setText(msProductlistDesc.get(position));
+//            holder.price.setText(msProductlistPrice.get(position));
+//                holder.mImageView.setImageURI(uri);
+//            }
+//            else{
+//                Log.d("Continue","Continuing");
+//                holder.name.setText("Item Name");
+//                holder.description.setText("Item Description");
+//                holder.price.setText("Item Price");
+//            }
+
+
+
+           // if (iActivity.getArguments().getInt("type") == 2){
+
+                if(msProductlistName!=null && msProductlistName.size()!= 0) {
+                    holder.name.setText(msProductlistName.get(position));
+                    holder.description.setText(msProductlistDesc.get(position));
+                    holder.price.setText(msProductlistPrice.get(position));
+                    holder.mImageView.setImageURI(uri);
+                }
+//                else{
+//                    Log.d("Continue","Continuing");
+////                    holder.name.setText("Item Name");
+////                    holder.description.setText("Item Description");
+////                    holder.price.setText("Item Price");
+//                }
+
+
+           // }else if (iActivity.getArguments().getInt("type") == 3){
+
+                if(mhProductlistName!=null && mhProductlistName.size()!= 0) {
+                    holder.name.setText(mhProductlistName.get(position));
+                    holder.description.setText(mhProductlistDesc.get(position));
+                    holder.price.setText(mhProductlistPrice.get(position));
+                    holder.mImageView.setImageURI(uri);
+                }
+//                else{
+//                    Log.d("Continue","Continuing");
+////                    holder.name.setText("Item Name");
+////                    holder.description.setText("Item Description");
+////                    holder.price.setText("Item Price");
+//                }
+           // }else if (iActivity.getArguments().getInt("type") == 4){
+
+                if(mtProductlistName!=null && mtProductlistName.size()!= 0) {
+                    holder.name.setText(mtProductlistName.get(position));
+                    holder.description.setText(mtProductlistDesc.get(position));
+                    holder.price.setText(mtProductlistPrice.get(position));
+                    holder.mImageView.setImageURI(uri);
+                }
+//                else{
+//                    Log.d("Continue","Continuing");
+////                    holder.name.setText("Item Name");
+////                    holder.description.setText("Item Description");
+////                    holder.price.setText("Item Price");
+//                }
+          //  }else if (iActivity.getArguments().getInt("type") == 5){
+
+                if(mwProductlistName!=null && mwProductlistName.size()!= 0) {
+                    holder.name.setText(mwProductlistName.get(position));
+                    holder.description.setText(mwProductlistDesc.get(position));
+                    holder.price.setText(mwProductlistPrice.get(position));
+                    holder.mImageView.setImageURI(uri);
+                }
+//                else{
+//                    Log.d("Continue","Continuing");
+////                    holder.name.setText("Item Name");
+////                    holder.description.setText("Item Description");
+////                    holder.price.setText("Item Price");
+//                }
+          //  }
 
             //getResults();
 

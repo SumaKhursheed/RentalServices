@@ -61,18 +61,49 @@ public class PrecustomerDashboard extends AppCompatActivity {
                                      String[] n = new String[obj.length()];
                                      String[] d = new String[obj.length()];
                                      String[] p = new String[obj.length()];
+                                     String[] category = new String[obj.length()];
 
                                      for (i=0;i<obj.length();i++){
                                          JSONObject jObject = obj.getJSONObject(i);
                                          if(jObject!=null) {
                                              ImageUrlUtils imageUrlUtils = new ImageUrlUtils();
-                                             n[i] = jObject.getString("productname");
-                                             imageUrlUtils.addProductListName(n[i]);
-                                             //holder.name.setText(n[i]);
-                                             d[i] = jObject.getString("productdescription");
-                                             imageUrlUtils.addProductListDesc(d[i]);
-                                             p[i] = jObject.getString("price");
-                                             imageUrlUtils.addProductListPrice(p[i]);
+                                             category[i]= jObject.getString("category");
+                                             if(category[i].equals("SOLAR")){
+                                                 n[i] = jObject.getString("productname");
+                                                 imageUrlUtils.addsProductListName(n[i]);
+                                                 //holder.name.setText(n[i]);
+                                                 d[i] = jObject.getString("productdescription");
+                                                 imageUrlUtils.addsProductListDesc(d[i]);
+                                                 p[i] = jObject.getString("price");
+                                                 imageUrlUtils.addsProductListPrice(p[i]);
+                                             }
+                                             else if(category[i].equals("HVAC")){
+                                                 n[i] = jObject.getString("productname");
+                                                 imageUrlUtils.addhProductListName(n[i]);
+                                                 //holder.name.setText(n[i]);
+                                                 d[i] = jObject.getString("productdescription");
+                                                 imageUrlUtils.addhProductListDesc(d[i]);
+                                                 p[i] = jObject.getString("price");
+                                                 imageUrlUtils.addhProductListPrice(p[i]);
+                                             }
+                                             else if(category[i].equals("SMART LIGHTING")){
+                                                 n[i] = jObject.getString("productname");
+                                                 imageUrlUtils.addtProductListName(n[i]);
+                                                 //holder.name.setText(n[i]);
+                                                 d[i] = jObject.getString("productdescription");
+                                                 imageUrlUtils.addtProductListDesc(d[i]);
+                                                 p[i] = jObject.getString("price");
+                                                 imageUrlUtils.addtProductListPrice(p[i]);
+                                             }
+                                             else if(category[i].equals("WINDOW FILM")){
+                                                 n[i] = jObject.getString("productname");
+                                                 imageUrlUtils.addwProductListName(n[i]);
+                                                 //holder.name.setText(n[i]);
+                                                 d[i] = jObject.getString("productdescription");
+                                                 imageUrlUtils.addwProductListDesc(d[i]);
+                                                 p[i] = jObject.getString("price");
+                                                 imageUrlUtils.addwProductListPrice(p[i]);
+                                             }
                                              // i=2;
                                              Log.d("SECOND SUCCESS", n[i]);
                                          }

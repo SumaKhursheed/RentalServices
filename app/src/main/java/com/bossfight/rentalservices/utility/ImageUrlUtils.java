@@ -12,9 +12,26 @@ public class ImageUrlUtils {
     static ArrayList<String> cartListPrice = new ArrayList<>();
     static ArrayList<String> cartListImageUri = new ArrayList<>();
     static ArrayList<String> orderListImageUri = new ArrayList<>();
+
     static ArrayList<String> productListName = new ArrayList<>();
     static ArrayList<String> productListDesc = new ArrayList<>();
     static ArrayList<String> productListPrice = new ArrayList<>();
+    //Solar list
+    static ArrayList<String> sproductListName = new ArrayList<>();
+    static ArrayList<String> sproductListDesc = new ArrayList<>();
+    static ArrayList<String> sproductListPrice = new ArrayList<>();
+    //HVAC list
+    static ArrayList<String> hproductListName = new ArrayList<>();
+    static ArrayList<String> hproductListDesc = new ArrayList<>();
+    static ArrayList<String> hproductListPrice = new ArrayList<>();
+    //Smart list
+    static ArrayList<String> tproductListName = new ArrayList<>();
+    static ArrayList<String> tproductListDesc = new ArrayList<>();
+    static ArrayList<String> tproductListPrice = new ArrayList<>();
+    //Window List
+    static ArrayList<String> wproductListName = new ArrayList<>();
+    static ArrayList<String> wproductListDesc = new ArrayList<>();
+    static ArrayList<String> wproductListPrice = new ArrayList<>();
 
     public static String[] getImageUrls() {
         String[] urls = new String[] {
@@ -132,7 +149,7 @@ public class ImageUrlUtils {
         String[] urls = new String[]{
                 "https://static.pexels.com/photos/159397/solar-panel-array-power-sun-electricity-159397.jpeg",
                 "https://static.pexels.com/photos/704810/pexels-photo-704810.jpeg",
-//                "https://stupiddope.com/wp-content/uploads/2015/05/Screen-Shot-2015-05-20-at-10.55.56-AM.png",
+                "https://stupiddope.com/wp-content/uploads/2015/05/Screen-Shot-2015-05-20-at-10.55.56-AM.png",
 //                "https://images-na.ssl-images-amazon.com/images/I/71dSGIKOLtL._SL1500_.jpg",
 //                "https://inhabitat.com/files/sun_bricks_main.jpg",
 //                "https://static.techspot.com/images2/news/bigimage/2014/08/2014-08-08-image-3.jpg",
@@ -147,6 +164,7 @@ public class ImageUrlUtils {
 //                "https://www.canstarblue.com.au/wp-content/uploads/2016/10/Split-system-air-conditioner.jpg",
 //                "http://images.nailsmag.com/post/M-exhaust-vent-nailsmag-1.jpg",
 //                "https://static1.squarespace.com/static/52865350e4b045ae0cc9df4c/529e0cf0e4b066cb1f3f7a63/52b4f1ebe4b060add9439b18/1387590125426/Alpha_Mechanical_Ventilation_2e.jpg",
+//
         };
         return urls;
     }
@@ -158,7 +176,7 @@ public class ImageUrlUtils {
 //                "https://www.allaboutyoursecurity.com/wp-content/uploads/2016/10/2gig-security-system.png",
 //                "https://cdn.solarbotics.com/products/photos/f4195a9ac70dca62f2e43fa3400d826d/51755-IMG_7505.jpg",
 //                "http://www.ikea.com/ms/en_US/media/visual_nav_images/seo_image/Smart%20lighting%20kits__Smart_Lighting_Vis_Nav_01.jpg",
-//
+
         };
         return urls;
     }
@@ -171,7 +189,7 @@ public class ImageUrlUtils {
 //                "https://images-na.ssl-images-amazon.com/images/I/71WF09cDfGL._SY355_.jpg",
 //                "https://images-na.ssl-images-amazon.com/images/I/61my%2Bd-J-EL._SY355_.jpg",
 //                "https://www.windowfilm.co.uk/site/imagerotators/50/635/privacy-window-film-by-the-window-film-company-4.jpg?w=653&h=285&mode=pad&bgcolor=black",
-//
+
         };
         return urls;
     }
@@ -203,6 +221,7 @@ public class ImageUrlUtils {
     public ArrayList<String> getWishListDesc(){ return this.wishListDesc; }
     public ArrayList<String> getWishListPrice(){ return this.wishListPrice; }
 
+    //---------------------------------------------------------------------------------------------------------------------
     // Methods for Products
     public void addProductListName(String productnamelist) { this.productListName.add(0,productnamelist); }
     public ArrayList<String> getProductListName(){ return this.productListName; }
@@ -212,6 +231,48 @@ public class ImageUrlUtils {
 
     public void addProductListPrice(String productpricelist) { this.productListPrice.add(0,productpricelist); }
     public ArrayList<String> getProductListPrice(){ return this.productListPrice; }
+
+    // Methods for Solar Products
+    public void addsProductListName(String sproductnamelist) { this.sproductListName.add(0,sproductnamelist); }
+    public ArrayList<String> getsProductListName(){ return this.sproductListName; }
+
+    public void addsProductListDesc(String sproductdesclist) { this.sproductListDesc.add(0,sproductdesclist); }
+    public ArrayList<String> getsProductListDesc(){ return this.sproductListDesc; }
+
+    public void addsProductListPrice(String sproductpricelist) { this.sproductListPrice.add(0,sproductpricelist); }
+    public ArrayList<String> getsProductListPrice(){ return this.sproductListPrice; }
+
+    // Methods for HVAC Products
+    public void addhProductListName(String hproductnamelist) { this.hproductListName.add(0,hproductnamelist); }
+    public ArrayList<String> gethProductListName(){ return this.hproductListName; }
+
+    public void addhProductListDesc(String hproductdesclist) { this.hproductListDesc.add(0,hproductdesclist); }
+    public ArrayList<String> gethProductListDesc(){ return this.hproductListDesc; }
+
+    public void addhProductListPrice(String hproductpricelist) { this.hproductListPrice.add(0,hproductpricelist); }
+    public ArrayList<String> gethProductListPrice(){ return this.hproductListPrice; }
+
+    // Methods for Smart Products
+    public void addtProductListName(String tproductnamelist) { this.tproductListName.add(0,tproductnamelist); }
+    public ArrayList<String> gettProductListName(){ return this.tproductListName; }
+
+    public void addtProductListDesc(String tproductdesclist) { this.tproductListDesc.add(0,tproductdesclist); }
+    public ArrayList<String> gettProductListDesc(){ return this.tproductListDesc; }
+
+    public void addtProductListPrice(String tproductpricelist) { this.tproductListPrice.add(0,tproductpricelist); }
+    public ArrayList<String> gettProductListPrice(){ return this.tproductListPrice; }
+
+    // Methods for Window Products
+    public void addwProductListName(String wproductnamelist) { this.wproductListName.add(0,wproductnamelist); }
+    public ArrayList<String> getwProductListName(){ return this.wproductListName; }
+
+    public void addwProductListDesc(String wproductdesclist) { this.wproductListDesc.add(0,wproductdesclist); }
+    public ArrayList<String> getwProductListDesc(){ return this.wproductListDesc; }
+
+    public void addwProductListPrice(String wproductpricelist) { this.wproductListPrice.add(0,wproductpricelist); }
+    public ArrayList<String> getwProductListPrice(){ return this.wproductListPrice; }
+
+    //---------------------------------------------------------------------------------------------------------------------
 
     // Methods for Cart
     public void addCartListImageUri(String wishlistImageUri) {
