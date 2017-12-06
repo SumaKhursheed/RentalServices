@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/vendor_rd"
                     android:layout_weight="1"
-                    android:checked="true"
+
                     android:buttonTint="#616161"/>
 
                 <RadioButton

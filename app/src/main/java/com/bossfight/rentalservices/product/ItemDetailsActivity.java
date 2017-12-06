@@ -43,7 +43,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
             imagePosition = getIntent().getIntExtra(ImageListFragment.STRING_IMAGE_URI,0);
         }
         name.setText(pname);
-        description.setText(pdesc);
+        description.setText("\u2022 " + pdesc);
         price.setText(pprice);
         Uri uri = Uri.parse(stringImageUri);
         mImageView.setImageURI(uri);
@@ -77,7 +77,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
                 //startActivity(new Intent(ItemDetailsActivity.this, PaymentActivity.class));
                 Intent intent = new Intent(ItemDetailsActivity.this, PaymentActivity.class);
                 intent.putExtra(STRING_PROD_NAME, name.getText().toString());
-                intent.putExtra(STRING_PROD_PRICE, price.getText().toString());
+                intent.putExtra(STRING_PROD_PRICE, pprice);
                 ItemDetailsActivity.this.startActivity(intent);
 
             }

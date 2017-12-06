@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.bossfight.rentalservices.R;
 import com.bossfight.rentalservices.customer.CustomerDashboard;
+import com.bossfight.rentalservices.customer.PrecustomerDashboard;
 import com.bossfight.rentalservices.customer.ViewComments;
 import com.bossfight.rentalservices.utility.AppConfig;
 import com.bossfight.rentalservices.vendor.VendorDashboard;
@@ -84,19 +85,22 @@ public class LoginActivity extends Activity
                                  Log.d("success", "" + resp);
 
                                  JSONObject jObj = new JSONObject(resp);
-                                 // int success = jObj.getInt("success");
-                                 String t = jObj.getString("token");
 
-                                 if(t != null){
+                                 JSONObject obj = jObj.getJSONObject("user");
+                                 String usertype;
+                                 usertype = obj.getString("usertype");
+
+
+                                 if(usertype.equals("Vendor")){
                                      Toast.makeText(getApplicationContext(), "Log in Successful", Toast.LENGTH_SHORT).show();
                                      String token = jObj.getString("token");
                                      Intent intent = new Intent();
                                      intent.setClass(LoginActivity.this, VendorDashboard.class);
                                      intent.putExtra("token", token);
                                      startActivity(intent);
-                                 } else{
+                                 } else
                                      Toast.makeText(getApplicationContext(), "Log in Failed", Toast.LENGTH_SHORT).show();
-                                 }
+
 
 
                              } catch (IOException e) {
@@ -138,14 +142,16 @@ public class LoginActivity extends Activity
                             Log.d("success", "" + resp);
 
                             JSONObject jObj = new JSONObject(resp);
-                            // int success = jObj.getInt("success");
-                            String t = jObj.getString("token");
 
-                            if(t != null){
+                            JSONObject obj = jObj.getJSONObject("user");
+                            String usertype;
+                            usertype = obj.getString("usertype");
+
+                            if(usertype.equals("Customer")){
                                 Toast.makeText(getApplicationContext(), "Log in Successful", Toast.LENGTH_SHORT).show();
                                 String token = jObj.getString("token");
                                 Intent intent = new Intent();
-                                intent.setClass(LoginActivity.this, CustomerDashboard.class);
+                                intent.setClass(LoginActivity.this, PrecustomerDashboard.class);
                                 intent.putExtra("token", token);
                                 startActivity(intent);
                             } else{

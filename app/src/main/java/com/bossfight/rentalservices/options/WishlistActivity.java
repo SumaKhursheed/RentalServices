@@ -104,7 +104,7 @@ public class WishlistActivity extends AppCompatActivity {
             holder.mImageView.setImageURI(uri);
             holder.name.setText(mWishlistName.get(position));
             holder.description.setText(mWishlistDesc.get(position));
-            holder.price.setText(mWishlistPrice.get(position));
+            holder.price.setText("$" + mWishlistPrice.get(position));
 
             holder.mLayoutItem.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -112,9 +112,9 @@ public class WishlistActivity extends AppCompatActivity {
                     Intent intent = new Intent(mContext, ItemDetailsActivity.class);
                     intent.putExtra(STRING_IMAGE_URI,mWishlistImageUri.get(position));
                     intent.putExtra(STRING_IMAGE_POSITION, position);
-                    intent.putExtra(STRING_PROD_NAME, holder.name.getText().toString());
-                    intent.putExtra(STRING_PROD_DESC, holder.description.getText().toString());
-                    intent.putExtra(STRING_PROD_PRICE, holder.price.getText().toString());
+                    intent.putExtra(STRING_PROD_NAME, mWishlistName.get(position));
+                    intent.putExtra(STRING_PROD_DESC, mWishlistDesc.get(position));
+                    intent.putExtra(STRING_PROD_PRICE, mWishlistPrice.get(position));
                     mContext.startActivity(intent);
                 }
             });

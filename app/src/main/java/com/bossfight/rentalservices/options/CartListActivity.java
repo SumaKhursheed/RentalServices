@@ -129,7 +129,7 @@ public class CartListActivity extends AppCompatActivity {
             //final Uri uri1 = Uri.parse(mCartlistName.get(position));
             holder.name.setText(mCartlistName.get(position));
             holder.description.setText(mCartlistDesc.get(position));
-            holder.price.setText(mCartlistPrice.get(position));
+            holder.price.setText("$" + mCartlistPrice.get(position));
 
 
             holder.mLayoutItem.setOnClickListener(new View.OnClickListener() {
@@ -138,9 +138,9 @@ public class CartListActivity extends AppCompatActivity {
                     Intent intent = new Intent(mContext, ItemDetailsActivity.class);
                     intent.putExtra(STRING_IMAGE_URI,mCartlistImageUri.get(position));
                     intent.putExtra(STRING_IMAGE_POSITION, position);
-                    intent.putExtra(STRING_PROD_NAME, holder.name.getText().toString());
-                    intent.putExtra(STRING_PROD_DESC, holder.description.getText().toString());
-                    intent.putExtra(STRING_PROD_PRICE, holder.price.getText().toString());
+                    intent.putExtra(STRING_PROD_NAME, mCartlistName.get(position));
+                    intent.putExtra(STRING_PROD_DESC, mCartlistDesc.get(position));
+                    intent.putExtra(STRING_PROD_PRICE, mCartlistPrice.get(position));
                     mContext.startActivity(intent);
                 }
             });

@@ -1,6 +1,7 @@
 package com.bossfight.rentalservices.customer;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -25,9 +27,23 @@ import com.bossfight.rentalservices.options.OrderlistActivity;
 import com.bossfight.rentalservices.options.SearchResultActivity;
 import com.bossfight.rentalservices.options.WishlistActivity;
 import com.bossfight.rentalservices.startup.LoginActivity;
+import com.bossfight.rentalservices.utility.AppConfig;
+import com.bossfight.rentalservices.utility.ImageUrlUtils;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class CustomerDashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -60,6 +76,12 @@ public class CustomerDashboard extends AppCompatActivity
             setupViewPager(viewPager);
             tabLayout.setupWithViewPager(viewPager);
         }
+
+
+
+    }
+
+    public void getResults(){
 
     }
 

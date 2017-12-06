@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.bossfight.rentalservices.R;
@@ -35,6 +36,8 @@ public class Registration extends AppCompatActivity{
 
     String BASE_URL = "https://gentle-cliffs-60386.herokuapp.com";
     public EditText firstname, lastname, address, email, password, contact;
+    String usertype;
+    public RadioButton rd1,rd2;
     private ZXingScannerView mScannerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +49,15 @@ public class Registration extends AppCompatActivity{
         email= (EditText)findViewById(R.id.email);
         password= (EditText)findViewById(R.id.password);
         contact= (EditText)findViewById(R.id.contact);
+        rd1 = (RadioButton) findViewById(R.id.vendor_rd);
     }
     public void onBuyProduct(View v){
+
+        if (rd1.isChecked())
+            usertype = "Vendor";
+        else
+            usertype = "Customer";
+
         RestAdapter adapter = new RestAdapter.Builder()
                 .setEndpoint(BASE_URL) //Setting the Root URL
                 .build();
@@ -60,6 +70,7 @@ public class Registration extends AppCompatActivity{
                 email.getText().toString(),
                 password.getText().toString(),
                 contact.getText().toString(),
+                usertype,
                 new Callback<Response>() {
                     @Override
                     public void success(Response result, Response response) {

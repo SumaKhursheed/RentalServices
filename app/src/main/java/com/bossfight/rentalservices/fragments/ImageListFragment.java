@@ -46,6 +46,7 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -77,20 +78,37 @@ public class ImageListFragment extends Fragment {
 
     private void setupRecyclerView(RecyclerView recyclerView) {
         String[] items=null;
+        ArrayList<String> productlistName= null;
+        ArrayList<String> productlistDesc=null;
+        ArrayList<String> productlistPrice=null;
+        ImageUrlUtils imageUrlUtils = new ImageUrlUtils();
+
         if (ImageListFragment.this.getArguments().getInt("type") == 1){
             items =ImageUrlUtils.getSolarUrls();
+            productlistName =imageUrlUtils.getProductListName();
+            productlistDesc =imageUrlUtils.getProductListDesc();
+            productlistPrice =imageUrlUtils.getProductListPrice();
         }else if (ImageListFragment.this.getArguments().getInt("type") == 2){
             items =ImageUrlUtils.getHvacUrls();
+            productlistName =imageUrlUtils.getProductListName();
+            productlistDesc =imageUrlUtils.getProductListDesc();
+            productlistPrice =imageUrlUtils.getProductListPrice();
         }else if (ImageListFragment.this.getArguments().getInt("type") == 3){
             items =ImageUrlUtils.getSmartUrls();
+            productlistName =imageUrlUtils.getProductListName();
+            productlistDesc =imageUrlUtils.getProductListDesc();
+            productlistPrice =imageUrlUtils.getProductListPrice();
         }else if (ImageListFragment.this.getArguments().getInt("type") == 4){
             items =ImageUrlUtils.getWindowUrls();
+            productlistName =imageUrlUtils.getProductListName();
+            productlistDesc =imageUrlUtils.getProductListDesc();
+            productlistPrice =imageUrlUtils.getProductListPrice();
         }else {
             items = ImageUrlUtils.getImageUrls();
         }
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(recyclerView, items));
+        recyclerView.setAdapter(new SimpleStringRecyclerViewAdapter(recyclerView, items, productlistName, productlistDesc, productlistPrice));
 
     }
 
@@ -98,6 +116,7 @@ public class ImageListFragment extends Fragment {
             extends RecyclerView.Adapter<SimpleStringRecyclerViewAdapter.ViewHolder> {
 
         private String[] mValues;
+        private ArrayList<String> mProductlistName, mProductlistDesc, mProductlistPrice;
         private RecyclerView mRecyclerView;
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -122,8 +141,11 @@ public class ImageListFragment extends Fragment {
             }
         }
 
-        public SimpleStringRecyclerViewAdapter(RecyclerView recyclerView, String[] items) {
+        public SimpleStringRecyclerViewAdapter(RecyclerView recyclerView, String[] items, ArrayList<String> productlistName, ArrayList<String> productlistDesc, ArrayList<String> productlistPrice) {
             mValues = items;
+            mProductlistName = productlistName;
+            mProductlistDesc = productlistDesc;
+            mProductlistPrice = productlistPrice;
             mRecyclerView = recyclerView;
         }
 
@@ -148,71 +170,77 @@ public class ImageListFragment extends Fragment {
         public void onBindViewHolder(final ViewHolder holder, final int position) {
 
             final Uri uri = Uri.parse(mValues[position]);
+            Log.isLoggable("POSITIONNNN", position);
             holder.mImageView.setImageURI(uri);
+            holder.name.setText(mProductlistName.get(position));
+            holder.description.setText(mProductlistDesc.get(position));
+            holder.price.setText(mProductlistPrice.get(position));
 
             //getResults();
 
-            RestAdapter adapter = new RestAdapter.Builder()
-                    .setEndpoint("https://gentle-cliffs-60386.herokuapp.com") //Setting the Root URL
-                    .build();
-
-            AppConfig.readproducts api = adapter.create(AppConfig.readproducts.class);
-            api.readData(new Callback<Response>() {
-                             @Override
-                             public void success(Response result, Response response) {
-
-                                 try {
-
-                                     BufferedReader reader = new BufferedReader(new InputStreamReader(result.getBody().in()));
-                                     String resp;
-                                     resp = reader.readLine();
-                                     Log.d("success", "" + resp);
-
-                                     JSONObject jObj = new JSONObject(resp);
-                                     int success = jObj.getInt("success");
-
-                                     JSONArray obj = jObj.getJSONArray("product");
-
-                                     int i;
-                                     String[] n = new String[obj.length()];
-                                     String[] d = new String[obj.length()];
-                                     String[] p = new String[obj.length()];
-//                                     holder.n[i] = "";
-//                                     holder.d[i] = "";
-//                                     holder.p[i] = "";
-                                     for (i=0;i<obj.length();i++){
-                                         JSONObject jObject = obj.getJSONObject(i);
-                                         if(jObject!=null) {
-                                             n[i] = jObject.getString("name");
-                                             holder.name.setText(n[i]);
-                                             d[i] = jObject.getString("description");
-                                             holder.description.setText(d[i]);
-                                             p[i] = jObject.getString("price");
-                                             holder.price.setText(p[i]);
-                                             // i=2;
-                                         }
-
-
-
-                                     }
-//                                     holder.name.setText(holder.n[i]);
-//                                     holder.description.setText(holder.d[i]);
-//                                     holder.price.setText(holder.p[i]);
-
-
-                                 } catch (IOException e) {
-                                     Log.d("Exception", e.toString());
-                                 } catch (JSONException e) {
-                                     Log.d("JsonException", e.toString());
-                                 }
-                             }
-
-                             @Override
-                             public void failure(RetrofitError error) {
-                                 Log.d("tag", "failure");
-                             }
-                         }
-            );
+//            RestAdapter adapter = new RestAdapter.Builder()
+//                    .setEndpoint("https://gentle-cliffs-60386.herokuapp.com") //Setting the Root URL
+//                    .build();
+//
+//            AppConfig.readproducts api = adapter.create(AppConfig.readproducts.class);
+//            api.readData(new Callback<Response>() {
+//                             @Override
+//                             public void success(Response result, Response response) {
+//
+//                                 try {
+//
+//                                     BufferedReader reader = new BufferedReader(new InputStreamReader(result.getBody().in()));
+//                                     String resp;
+//                                     resp = reader.readLine();
+//                                     Log.d("success", "" + resp);
+//
+//                                     JSONObject jObj = new JSONObject(resp);
+//                                     int success = jObj.getInt("success");
+//
+//                                     JSONArray obj = jObj.getJSONArray("product");
+//
+//                                     int i;
+//                                     String[] n = new String[obj.length()];
+//                                     String[] d = new String[obj.length()];
+//                                     String[] p = new String[obj.length()];
+////                                     holder.n[i] = "";
+////                                     holder.d[i] = "";
+////                                     holder.p[i] = "";
+//                                     for (i=0;i<obj.length();i++){
+//                                         JSONObject jObject = obj.getJSONObject(i);
+//                                         if(jObject!=null) {
+//                                             ImageUrlUtils imageUrlUtils = new ImageUrlUtils();
+//                                             n[i] = jObject.getString("productname");
+//                                             imageUrlUtils.addProductListName(n[i]);
+//                                             //holder.name.setText(n[i]);
+//                                             d[i] = jObject.getString("productdescription");
+//                                             holder.description.setText(d[i]);
+//                                             p[i] = jObject.getString("price");
+//                                             holder.price.setText(p[i]);
+//                                             // i=2;
+//                                         }
+//
+//
+//
+//                                     }
+////                                     holder.name.setText(holder.n[i]);
+////                                     holder.description.setText(holder.d[i]);
+////                                     holder.price.setText(holder.p[i]);
+//
+//
+//                                 } catch (IOException e) {
+//                                     Log.d("Exception", e.toString());
+//                                 } catch (JSONException e) {
+//                                     Log.d("JsonException", e.toString());
+//                                 }
+//                             }
+//
+//                             @Override
+//                             public void failure(RetrofitError error) {
+//                                 Log.d("tag", "failure");
+//                             }
+//                         }
+//            );
 
 
 

@@ -31,6 +31,7 @@ public class AppConfig {
                 @Field("email") String email,
                 @Field("password") String password,
                 @Field("contact") String contact,
+                @Field("usertype") String usertype,
                 Callback<Response> callback);
     }
 
@@ -81,9 +82,9 @@ public class AppConfig {
         @FormUrlEncoded
         @POST("/orders")
         void pay(
-                @Field("productname") String card,
-                @Field("productdescription") String productdescription,
-                @Field("quantity") String quantity,
+                @Field("cardname") String cardname,
+                @Field("cardnumber") String cardnumber,
+                @Field("productname") String productname,
                 @Field("price") String price,
                 Callback<Response> callback);
     }

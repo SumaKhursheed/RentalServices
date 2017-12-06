@@ -12,6 +12,9 @@ public class ImageUrlUtils {
     static ArrayList<String> cartListPrice = new ArrayList<>();
     static ArrayList<String> cartListImageUri = new ArrayList<>();
     static ArrayList<String> orderListImageUri = new ArrayList<>();
+    static ArrayList<String> productListName = new ArrayList<>();
+    static ArrayList<String> productListDesc = new ArrayList<>();
+    static ArrayList<String> productListPrice = new ArrayList<>();
 
     public static String[] getImageUrls() {
         String[] urls = new String[] {
@@ -199,6 +202,16 @@ public class ImageUrlUtils {
     public ArrayList<String> getWishListName(){ return this.wishListName; }
     public ArrayList<String> getWishListDesc(){ return this.wishListDesc; }
     public ArrayList<String> getWishListPrice(){ return this.wishListPrice; }
+
+    // Methods for Products
+    public void addProductListName(String productnamelist) { this.productListName.add(0,productnamelist); }
+    public ArrayList<String> getProductListName(){ return this.productListName; }
+
+    public void addProductListDesc(String productdesclist) { this.productListDesc.add(0,productdesclist); }
+    public ArrayList<String> getProductListDesc(){ return this.productListDesc; }
+
+    public void addProductListPrice(String productpricelist) { this.productListPrice.add(0,productpricelist); }
+    public ArrayList<String> getProductListPrice(){ return this.productListPrice; }
 
     // Methods for Cart
     public void addCartListImageUri(String wishlistImageUri) {

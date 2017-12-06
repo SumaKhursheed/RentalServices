@@ -27,7 +27,7 @@ import retrofit.client.Response;
 public class PaymentActivity extends AppCompatActivity {
 
     String BASE_URL = "https://gentle-cliffs-60386.herokuapp.com";
-    public EditText name, card, cvc, exp, prodname, price, pricewo;
+    public EditText name, card, cvc, exp, prodname, price;
     String pname, pprice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,6 @@ public class PaymentActivity extends AppCompatActivity {
         cvc= (EditText)findViewById(R.id.cvc);
         exp= (EditText)findViewById(R.id.exp);
         price= (EditText)findViewById(R.id.price);
-        pricewo= (EditText)findViewById(R.id.price);
         prodname= (EditText)findViewById(R.id.productname);
 
         if (getIntent() != null) {
@@ -56,9 +55,9 @@ public class PaymentActivity extends AppCompatActivity {
 
         AppConfig.pay api = adapter.create(AppConfig.pay.class);
         api.pay(
-                prodname.getText().toString(),
                 name.getText().toString(),
-                cvc.getText().toString(),
+                card.getText().toString(),
+                prodname.getText().toString(),
                 pprice,
                 new Callback<Response>() {
                     @Override
@@ -76,7 +75,7 @@ public class PaymentActivity extends AppCompatActivity {
 
 
                             if(success == 1){
-                                Toast.makeText(getApplicationContext(), "Payment Successful", Toast.LENGTH_SHORT).show();;
+                                Toast.makeText(getApplicationContext(), "Payment Successful", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent();
                                 intent.setClass(com.bossfight.rentalservices.customer.PaymentActivity.this, CustomerDashboard.class);
                                 startActivity(intent);
